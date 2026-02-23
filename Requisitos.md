@@ -1,113 +1,115 @@
-# Diseño de Software
+# Requisitos Funcionales
 
-## Sistema de citas por medio del WhatsApp y Web
+## RF-01: Agendamiento Multicanal (Web y WhatsApp)
+El sistema debe otorgar la facultad de agendar citas terapéuticas a los usuarios previamente verificados en el sistema, a través de los canales disponibles (Web y WhatsApp).
 
-Es un sistema de agendamiento de citas y reprogramación de estas, con un enfoque en el uso de la API de WhatsApp para poder mandar notificaciones, agendar y reprogramar todo desde WhatsApp. También está el sistema en la parte web.
-
----
-
-## Requerimientos Funcionales
-
-### RF-01: Agendamiento Multicanal (Web y WhatsApp)
-El sistema debe permitir a usuarios verificados agendar nuevas citas en el Sistema de Citas.  
-
-**Editado:** El sistema debe otorgar la facultad de agendar citas terapéuticas a los usuarios previamente verificados en el sistema, a través de los canales disponibles (Web y WhatsApp).  
-
-*(Pendiente: definir si el usuario escoge psicólogo o se asigna automáticamente)*
+> (Hay que ver cómo funciona el sistema de agenda de citas de la facultad)  
+> Ejemplo: ¿Se le deja escoger el psicólogo a los usuarios?, ¿o se les asigna automáticamente uno?
 
 ---
 
-### RF-02: Visualización de citas futuras
-El usuario debe poder visualizar cuándo es su próxima cita.  
+## RF-02: Visualización de citas futuras
+El sistema debe otorgar al usuario una vista de sus próximas citas terapéuticas, mostrando los detalles de cada cita.
 
-**Editado:** El sistema debe otorgar al usuario una vista de sus próximas citas terapéuticas, mostrando detalles relevantes de cada cita.  
+**Información obligatoria:**
+- Nombre del paciente  
+- Tipo de cita  
+- Horario de la cita  
+- Ubicación (# Consultorio)  
 
-*(Pendiente: definir qué información se mostrará y cómo se presentará)*
-
----
-
-### RF-03: Reprogramación de citas
-En caso de que el usuario ya tenga una cita agendada, el sistema debe permitirle reagendar la cita a otro día y hora disponible.  
-
-**Editado:** El sistema debe permitir a los usuarios reagendar sus citas terapéuticas previamente registradas. El administrador también debe poder realizar esta acción en casos pertinentes.  
-
-*(Pendiente: definir qué información se solicita al usuario)*
+> (¿De qué manera se le mostrará?, ¿qué información adicional se le mostrará de la cita?)
 
 ---
 
-### RF-04: Sincronización de disponibilidad en tiempo real
-Al momento de agendar o reagendar una cita, el sistema debe bloquear en la base de datos el horario seleccionado por el usuario, impidiendo que este sea seleccionado por otro usuario y evitando el double-booking.  
+## RF-03: Reprogramación de citas
+El sistema debe permitir a los usuarios reagendar sus citas previamente registradas.  
+El administrador también debe poder realizar esta acción en los casos pertinentes.
 
-**Editado:** Durante el proceso de selección de horario de la cita terapéutica, el sistema debe impedir que otros usuarios seleccionen la fecha previamente elegida por el usuario en proceso de agendamiento.  
-
-*(Pendiente: definir si se bloquea al seleccionar o al confirmar la cita)*
+> (¿Información que se le solicita al usuario?)
 
 ---
 
-### RF-05: Generación de comprobante de cita
-Después de que se agende o reagende una cita, se debe proporcionar al usuario un resumen de la transacción.  
+## RF-05: Sincronización de disponibilidad en tiempo real
+Al agendar o reagendar una cita, el sistema debe bloquear en la base de datos el horario seleccionado, evitando el **double-booking**.
 
-**Editado:** Posterior a la generación o reprogramación de una cita, se debe proporcionar al usuario un comprobante con los datos relevantes:  
+Durante el proceso de selección de horario, el sistema debe impedir que otros usuarios seleccionen la fecha previamente elegida.
+
+> (¿Se bloquea apenas lo selecciona?, ¿se bloquea una vez se agenda la cita?)
+
+---
+
+## RF-06: Generación de comprobante de cita
+Posterior a la generación o reprogramación de una cita, se debe proporcionar al usuario un comprobante con los datos relevantes:
+
+**Contenido del comprobante:**
 - Número de folio  
 - Nombre del terapeuta asignado  
 - Tipo de sesión terapéutica  
 - Fecha (dd/mm/yyyy)  
-- Hora (formato 12 horas)  
+- Hora (formato 12 horas: 9 a.m. / 9 p.m.)  
 - Ubicación del consultorio  
 
 ---
 
-## Web
+# Web
+
 - RF: Agendamiento de citas  
 - RF: Visualización de citas  
 - RF: Reprogramación de citas  
 
 ---
 
-## WhatsApp
+# WhatsApp (Requisitos definidos para el módulo de WhatsApp)
 
-### RF: Agendamiento de citas
-El sistema debe permitir al usuario agendar citas.  
+## RF-W01: Agendamiento de citas
+El sistema debe permitir al usuario agendar citas.
 
-**Flujo:**  
-1. Se pide al usuario el día en formato DD/MM/AAAA.  
-2. Se muestran horarios disponibles en lista numérica.  
-   - Ejemplo:  
-     - 9:00 AM  
-     - 10:00 AM  
-     - 12:00 PM  
+**Flujo:**
+1. Se pide al usuario el día en formato DD/MM/AAAA (Ejemplo: 25/02/2026).  
+2. Se muestran los horarios disponibles en lista numérica:  
+   - 9:00 AM  
+   - 10:00 AM  
+   - 12:00 PM  
 3. El usuario elige la hora ingresando el número correspondiente.  
 4. Se solicitan los siguientes datos:  
-   - Nombre completo  
-   - Teléfono  
+   - Nombre completo (si es primera cita)  
+   - Teléfono (posiblemente innecesario)  
+   - Tipo de sesión  
    - Motivo de la consulta (opcional)  
 
-*(Pendiente: definir si el usuario escoge psicólogo o se asigna automáticamente)*
+> (Hay que ver cómo funciona el sistema de agenda de la facultad)  
+> Nos falta el flujo de trabajo para usuarios nuevos y continuos.
 
 ---
 
-### RF: Visualización de citas futuras
-El chatbot debe mostrar al usuario cuándo será su próxima cita y ofrecer opciones de reprogramación o cancelación.  
+## RF-W02: Visualización de citas futuras
+Si existe una cita agendada, el chatbot debe mostrar la próxima cita y ofrecer opciones de reprogramación o cancelación.
 
-*(Pendiente: definir si se muestra en texto o imagen)*
-
----
-
-### RF: Reprogramación de citas
-El chatbot debe permitir reprogramar una cita existente a otro día y hora disponible, mostrando lista de horarios para el día elegido.  
+> (¿Imagen? ¿Texto? ¿Cómo será la disposición de los elementos?)
 
 ---
 
-## Requerimientos No Funcionales
+## RF-W03: Reprogramación de citas
+El chatbot debe permitir reprogramar una cita existente a otro día y hora disponible, mostrando lista de horarios para el día elegido.
 
-### RNF: Privacidad y seguridad de datos
-El sistema no debe almacenar datos sensibles en registros temporales, cumpliendo normativas de protección de datos médicos.  
+---
 
-### RNF: Usabilidad del Chatbot
-El flujo de conversación en WhatsApp debe diseñarse con pocas opciones enumeradas, minimizando la escritura libre.  
+# Requisitos No Funcionales
 
-### RNF: Disponibilidad
-El módulo de agenda debe garantizar disponibilidad 24/7.  
+## RNF-01: Privacidad y seguridad de datos
+El sistema no debe almacenar datos sensibles en registros temporales, cumpliendo normativas de protección de datos médicos.
 
-### RNF: Identificación sin inicio de sesión
-Se envía un código por WhatsApp o SMS al número de celular para verificar identidad y presentar las citas asociadas.  
+---
+
+## RNF-02: Usabilidad del Chatbot
+El flujo de conversación en WhatsApp debe diseñarse con pocas opciones enumeradas, minimizando la escritura libre.
+
+---
+
+## RNF-03: Disponibilidad
+El módulo de agenda debe garantizar disponibilidad **24/7**.
+
+---
+
+## RNF-04: Identificación sin inicio de sesión
+Se envía un código por WhatsApp o SMS al número de celular para verificar identidad y presentar citas asociadas.
