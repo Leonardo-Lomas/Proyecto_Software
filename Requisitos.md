@@ -1,93 +1,126 @@
-# Requisitos Funcionales
+# 📌 Especificación del Sistema de Agenda Terapéutica
 
-## RF-01: Agendamiento Multicanal (Web y WhatsApp)
-El sistema debe otorgar la facultad de agendar citas terapéuticas a los usuarios previamente verificados en el sistema, a través de los canales disponibles (Web y WhatsApp).
+## Requisitos Funcionales
 
-> (Hay que ver cómo funciona el sistema de agenda de citas de la facultad)  
-> Ejemplo: ¿Se le deja escoger el psicólogo a los usuarios?, ¿o se les asigna automáticamente uno?
+### **RF-01: Concertación Multicanal de Citas (Web y WhatsApp)**
+El sistema deberá facultar a los usuarios previamente autenticados para concertar citas terapéuticas mediante los canales habilitados (Web y WhatsApp).  
+- El flujo de concertación contemplará la elección del profesional por parte del usuario o, en su defecto, la asignación automática conforme a la disponibilidad.  
+- Se garantizará la coherencia y sincronización de la información entre ambos canales.
 
-## RF-02: Visualización de citas futuras
-El sistema debe otorgar al usuario una vista de sus próximas citas terapéuticas, mostrando los detalles de cada cita.
-
-**Información obligatoria:**
-- Nombre del paciente  
-- Tipo de cita  
-- Horario de la cita  
-- Ubicación (# Consultorio)  
-
-> (¿De qué manera se le mostrará?, ¿qué información adicional se le mostrará de la cita?)
-
-## RF-03: Reprogramación de citas
-El sistema debe permitir a los usuarios reagendar sus citas previamente registradas.  
-El administrador también debe poder realizar esta acción en los casos pertinentes.
-
-> (¿Información que se le solicita al usuario?)
-
-## RF-05: Sincronización de disponibilidad en tiempo real
-Al agendar o reagendar una cita, el sistema debe bloquear en la base de datos el horario seleccionado, evitando el **double-booking**.
-
-Durante el proceso de selección de horario, el sistema debe impedir que otros usuarios seleccionen la fecha previamente elegida.
-
-> (¿Se bloquea apenas lo selecciona?, ¿se bloquea una vez se agenda la cita?)
-
-## RF-06: Generación de comprobante de cita
-Posterior a la generación o reprogramación de una cita, se debe proporcionar al usuario un comprobante con los datos relevantes:
-
-**Contenido del comprobante:**
-- Número de folio  
-- Nombre del terapeuta asignado  
-- Tipo de sesión terapéutica  
-- Fecha (dd/mm/yyyy)  
-- Hora (formato 12 horas: 9 a.m. / 9 p.m.)  
-- Ubicación del consultorio  
-
-># Web
->
->- RF: Agendamiento de citas  
->- RF: Visualización de citas  
->- RF: Reprogramación de citas
-
-# WhatsApp (Requisitos definidos para el módulo de WhatsApp)
-
-## RF-W01: Agendamiento de citas
-El sistema debe permitir al usuario agendar citas.
-
-**Flujo:**
-1. Se pide al usuario el día en formato DD/MM/AAAA (Ejemplo: 25/02/2026).  
-2. Se muestran los horarios disponibles en lista numérica:  
-   - 9:00 AM  
-   - 10:00 AM  
-   - 12:00 PM  
-3. El usuario elige la hora ingresando el número correspondiente.  
-4. Se solicitan los siguientes datos:  
-   - Nombre completo (si es primera cita)  
-   - Teléfono (posiblemente innecesario)  
-   - Tipo de sesión  
-   - Motivo de la consulta (opcional)  
-
-> (Hay que ver cómo funciona el sistema de agenda de la facultad)  
-> Nos falta el flujo de trabajo para usuarios nuevos y continuos.
-
-## RF-W02: Visualización de citas futuras
-Si existe una cita agendada, el chatbot debe mostrar la próxima cita y ofrecer opciones de reprogramación o cancelación.
-
-> (¿Imagen? ¿Texto? ¿Cómo será la disposición de los elementos?)
-
-## RF-W03: Reprogramación de citas
-El chatbot debe permitir reprogramar una cita existente a otro día y hora disponible, mostrando lista de horarios para el día elegido.
+**Caso de Uso CU-01: Concertar cita multicanal**  
+- **Actor:** Usuario autenticado  
+- **Flujo:** Acceso → Selección de opción → Elección de fecha/hora/profesional → Confirmación → Emisión de comprobante.  
+- **Postcondición:** La cita queda registrada en el repositorio central de datos.  
 
 ---
 
-# Requisitos No Funcionales
+### **RF-02: Visualización de Citas Venideras**
+El sistema deberá proporcionar al usuario una representación clara y estructurada de sus citas futuras, incluyendo: paciente, tipología de sesión, fecha, hora y consultorio asignado.  
+Opcionalmente, se podrá desplegar información complementaria como el nombre del terapeuta y el estado de la cita (confirmada, pendiente, reprogramada).
 
-## RNF-01: Privacidad y seguridad de datos
-El sistema no debe almacenar datos sensibles en registros temporales, cumpliendo normativas de protección de datos médicos.
+**Caso de Uso CU-02: Consultar citas venideras**  
+- **Actor:** Usuario autenticado  
+- **Flujo:** Solicita consulta → Sistema despliega listado → Usuario accede a detalles.  
+- **Postcondición:** El usuario visualiza sus compromisos confirmados.  
 
-## RNF-02: Usabilidad del Chatbot
-El flujo de conversación en WhatsApp debe diseñarse con pocas opciones enumeradas, minimizando la escritura libre.
+---
 
-## RNF-03: Disponibilidad
-El módulo de agenda debe garantizar disponibilidad **24/7**.
+### **RF-03: Reprogramación de Citas**
+El sistema deberá permitir la reprogramación de citas previamente registradas.  
+- El administrador podrá efectuar esta acción en situaciones excepcionales (ej. ausencia del terapeuta).  
+- El flujo solicitará la información mínima indispensable para validar la reprogramación.
 
-## RNF-04: Identificación sin inicio de sesión
-Se envía un código por WhatsApp o SMS al número de celular para verificar identidad y presentar citas asociadas.
+**Caso de Uso CU-03: Reprogramar cita**  
+- **Actor:** Usuario o administrador  
+- **Flujo:** Solicita reprogramación → Sistema muestra alternativas → Selección → Actualización → Emisión de comprobante.  
+- **Postcondición:** La cita queda registrada con nueva fecha y hora.  
+
+---
+
+### **RF-04: Sincronización de Disponibilidad en Tiempo Real**
+El sistema deberá bloquear en tiempo real los horarios seleccionados durante el proceso de concertación o reprogramación, evitando la duplicidad de reservas (**double-booking**).  
+- Se definirá el instante exacto de bloqueo (selección vs confirmación final).
+
+**Caso de Uso CU-04: Bloqueo de horario en tiempo real**  
+- **Actor:** Usuario autenticado  
+- **Flujo:** Selección de horario → Bloqueo temporal → Confirmación → Bloqueo definitivo.  
+- **Postcondición:** El horario queda reservado de manera exclusiva.  
+
+---
+
+### **RF-05: Generación de Comprobante de Cita**
+El sistema deberá emitir un comprobante digital tras la creación o reprogramación de una cita.  
+- Datos: folio, terapeuta, tipología de sesión, fecha, hora y consultorio.  
+- Disponible tanto en Web como en WhatsApp.
+
+**Caso de Uso CU-05: Emitir comprobante de cita**  
+- **Actor:** Usuario autenticado  
+- **Flujo:** Confirmación de cita → Generación de comprobante → Entrega al usuario.  
+- **Postcondición:** El usuario recibe constancia oficial de su cita.  
+
+---
+
+## 📱 Módulo WhatsApp
+
+### **RF-W01: Concertación de citas vía chatbot**
+El chatbot deberá permitir la concertación de citas mediante un flujo conversacional estructurado: fecha → horarios → selección → datos → confirmación.
+
+**Caso de Uso CU-W01: Concertar cita vía chatbot**  
+- **Actor:** Usuario (nuevo o recurrente)  
+- **Flujo:** Fecha → Horarios → Selección → Datos → Confirmación → Comprobante.  
+
+---
+
+### **RF-W02: Visualización de citas venideras vía chatbot**
+El chatbot deberá mostrar la próxima cita y ofrecer opciones de reprogramación o cancelación.
+
+**Caso de Uso CU-W02: Consultar próxima cita vía chatbot**  
+- **Actor:** Usuario  
+- **Flujo:** Solicita cita → Chatbot despliega detalles → Opciones de reprogramar/cancelar.  
+
+---
+
+### **RF-W03: Reprogramación de citas vía chatbot**
+El chatbot deberá permitir la reprogramación de citas mostrando horarios disponibles.
+
+**Caso de Uso CU-W03: Reprogramar cita vía chatbot**  
+- **Actor:** Usuario  
+- **Flujo:** Solicita reprogramar → Nueva fecha → Horarios → Selección → Confirmación → Comprobante.  
+
+---
+
+## Requisitos No Funcionales
+
+### **RNF-01: Privacidad y Seguridad de Datos**
+El sistema deberá cumplir con normativas de protección de datos médicos, evitando el almacenamiento de información sensible en registros temporales.
+
+**Caso de Uso CU-NF01: Protección de datos sensibles**  
+- **Actor:** Sistema  
+- **Flujo:** Evita almacenamiento temporal → Cumple normativas.  
+
+---
+
+### **RNF-02: Usabilidad del Chatbot**
+El flujo conversacional deberá ser intuitivo, con opciones enumeradas y mínima escritura libre.
+
+**Caso de Uso CU-NF02: Interacción simplificada**  
+- **Actor:** Usuario  
+- **Flujo:** Interacción con opciones → Minimiza errores.  
+
+---
+
+### **RNF-03: Disponibilidad**
+El sistema deberá garantizar disponibilidad continua (**24/7**) con mecanismos de respaldo.
+
+**Caso de Uso CU-NF03: Acceso permanente**  
+- **Actor:** Usuario  
+- **Flujo:** Accede en cualquier momento → Sistema responde sin interrupciones.  
+
+---
+
+### **RNF-04: Identificación sin inicio de sesión**
+El sistema deberá permitir la verificación de identidad mediante código enviado por WhatsApp o SMS.
+
+**Caso de Uso CU-NF04: Verificación vía código SMS/WhatsApp**  
+- **Actor:** Usuario  
+- **Flujo:** Sistema envía código → Usuario ingresa → Validación → Acceso a citas.  
