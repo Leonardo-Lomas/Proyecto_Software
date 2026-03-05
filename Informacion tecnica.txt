@@ -1,0 +1,38 @@
+
+Primer contacto = Cita de primera vez
+Los datos genericos 
+Nombre: Un nombre y un apellido
+informacion de contacto: correo o whatsapp. (validar)
+Prefencia de contacto: ##
+Fecha de nacimiento: dd/mm/yyyy
+Sexo: H/M
+
+#### Publico en general. <<-- Nota personal -->>
+
+
+
+# Formulario para primera cita y cita continua #
+
+Consultorio: Pendiente... para verlo con el otro equipo.
+
+Doctor: Pendiente...
+por hablar lo de tipo franja de horario, seleccion automatica, o el usuario selecciona?
+
+Seleccion de horario: el usuario lo selecciona
+Generacion de comprobante: a opcion del usuario de los medios de informacion de contacto.
+
+Razon de cita: Texto por el usuario del porque esta yendo....
+
+
+### informacion de contacto ###
+
+
+
+
+### visualizacion de la cita ###
+
+
+
+
+### Reprogramacion de la cita ###
+Inicialmente solo debe de permitir modificar el hora y fecha de la cita asignada.

@@ -15,7 +15,8 @@ El sistema deberá facultar a los usuarios previamente autenticados para concert
 ---
 
 ### **RF-02: Visualización de Citas Venideras**
-El sistema deberá proporcionar al usuario una representación clara y estructurada de sus citas futuras, incluyendo: paciente, tipología de sesión, fecha, hora y consultorio asignado.  
+El sistema deberá proporcionar al usuario una representación clara y estructurada de sus citas futuras, incluyendo: paciente, tipología de sesión, fecha, hora y consultorio asignado.
+Estara disponible en la visualizacion la opcion de reprogramacion de cita.
 Opcionalmente, se podrá desplegar información complementaria como el nombre del terapeuta y el estado de la cita (confirmada, pendiente, reprogramada).
 
 **Caso de Uso CU-02: Consultar citas venideras**  
@@ -26,7 +27,7 @@ Opcionalmente, se podrá desplegar información complementaria como el nombre de
 ---
 
 ### **RF-03: Reprogramación de Citas**
-El sistema deberá permitir la reprogramación de citas previamente registradas.  
+El sistema deberá permitir la reprogramación de citas previamente registradas. Pudiendo modificar el horario y fecha de la cita previamente asignada.  
 - El administrador podrá efectuar esta acción en situaciones excepcionales (ej. ausencia del terapeuta).  
 - El flujo solicitará la información mínima indispensable para validar la reprogramación.
 
@@ -37,20 +38,9 @@ El sistema deberá permitir la reprogramación de citas previamente registradas.
 
 ---
 
-### **RF-04: Sincronización de Disponibilidad en Tiempo Real**
-El sistema deberá bloquear en tiempo real los horarios seleccionados durante el proceso de concertación o reprogramación, evitando la duplicidad de reservas (**double-booking**).  
-- Se definirá el instante exacto de bloqueo (selección vs confirmación final).
-
-**Caso de Uso CU-04: Bloqueo de horario en tiempo real**  
-- **Actor:** Usuario autenticado  
-- **Flujo:** Selección de horario → Bloqueo temporal → Confirmación → Bloqueo definitivo.  
-- **Postcondición:** El horario queda reservado de manera exclusiva.  
-
----
-
-### **RF-05: Generación de Comprobante de Cita**
+### **RF-04: Generación de Comprobante de Cita**
 El sistema deberá emitir un comprobante digital tras la creación o reprogramación de una cita.  
-- Datos: folio, terapeuta, tipología de sesión, fecha, hora y consultorio.  
+- Datos: Paciente, terapeuta, tipología de sesión, fecha, hora y consultorio.  
 - Disponible tanto en Web como en WhatsApp.
 
 **Caso de Uso CU-05: Emitir comprobante de cita**  
@@ -73,6 +63,7 @@ El chatbot deberá permitir la concertación de citas mediante un flujo conversa
 
 ### **RF-W02: Visualización de citas venideras vía chatbot**
 El chatbot deberá mostrar la próxima cita y ofrecer opciones de reprogramación o cancelación.
+(Pendiente) Definir el mensaje a mostrar, tomando en consideracion el numero de caracteres
 
 **Caso de Uso CU-W02: Consultar próxima cita vía chatbot**  
 - **Actor:** Usuario  

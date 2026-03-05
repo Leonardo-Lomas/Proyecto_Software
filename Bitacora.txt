@@ -1,0 +1,21 @@
+Actividades _ 05/03/2026 - 09/03/2026
+
+Lomas Lopez Leonardo:
+
+Guion del WhatsApp _ mockup de la parte de whatsapp - (por ver como se presenta)
+
+Gutierrez Lopez Miguel Angel:
+
+Diagrama tipo C4 de la interaccion de los componentes del sistema y componentes externos
+
+Jaime Armando Osorio Muñoz:
+
+Diseño Mockups del sistema, tener en cuenta la experiencia de usuario _ Incluye la documentacion pertinente de los elementos.
+
+Rodrigo Irineo Yupit Colli:
+
+Diagrama business process / casos de uso- Caso de caso continuo
+
+Josemaria Conde Chabarria:
+
+Diagrama business process / casos de uso - Caso de primer contacto / Primera vez.
