@@ -119,7 +119,7 @@ El sistema deberá garantizar disponibilidad continua (**24/7**) con mecanismos 
 ---
 
 ### **RNF-04: Identificación sin inicio de sesión**
-El sistema deberá permitir la verificación de identidad mediante código enviado por WhatsApp o SMS.
+El sistema deberá permitir la verificación de identidad mediante código enviado por WhatsApp.
 
 **Caso de Uso CU-NF04: Verificación vía código SMS/WhatsApp**  
 - **Actor:** Usuario  
