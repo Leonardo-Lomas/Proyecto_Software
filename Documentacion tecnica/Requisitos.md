@@ -14,14 +14,14 @@ El sistema deberá facultar a los usuarios previamente autenticados para concert
 
 ---
 
-### **RF-02: Visualización de Citas Venideras**
-El sistema deberá proporcionar al usuario una representación clara y estructurada de sus citas futuras, incluyendo: paciente, tipología de sesión, fecha, hora y consultorio asignado.  
-Opcionalmente, se podrá desplegar información complementaria como el nombre del terapeuta y el estado de la cita (confirmada, pendiente, reprogramada).
+### **RF-02: Consulta de citas**
+El sistema debe permitirle al usuario consultar su proxima cita, el comprobante y informacion de la misma, en la que se incluye: paciente, tipología de sesión,
+fecha, hora, consultorio asignado, nombre del terapeuta y el estado de la cita
 
-**Caso de Uso CU-02: Consultar citas venideras**  
+**Caso de Uso CU-02: Consulta de citas**  
 - **Actor:** Usuario autenticado  
-- **Flujo:** Solicita consulta → Sistema despliega listado → Usuario accede a detalles.  
-- **Postcondición:** El usuario visualiza sus compromisos confirmados.  
+- **Flujo:** Solicita consulta → Sistema proporciona informacion y comprobante de cita proxima
+- **Postcondición:** El usuario visualiza sus compromisos confirmados.
 
 ---
 
