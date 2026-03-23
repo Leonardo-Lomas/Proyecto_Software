@@ -2,15 +2,15 @@
 
 ## Requisitos Funcionales
 
-### **RF-01: Concertación Multicanal de Citas (Web y WhatsApp)**
-El sistema deberá facultar a los usuarios previamente autenticados para concertar citas terapéuticas mediante los canales habilitados (Web y WhatsApp).  
+### **RF-01: Programación Multicanal de Citas (Web y WhatsApp)**
+El sistema deberá facultar a los usuarios previamente autenticados para programar citas terapéuticas mediante los canales habilitados (Web y WhatsApp).  
 - El flujo de concertación contemplará la elección del profesional por parte del usuario o, en su defecto, la asignación automática conforme a la disponibilidad.  
-- Se garantizará la coherencia y sincronización de la información entre ambos canales.
+- Se garantizará la coherencia y sincronización de la información entre ambos canales, evitando duplicidades o incosistencias.
 
-**Caso de Uso CU-01: Concertar cita multicanal**  
+**Caso de Uso CU-01: Programar cita multicanal**  
 - **Actor:** Usuario autenticado  
 - **Flujo:** Acceso → Selección de opción → Elección de fecha/hora/profesional → Confirmación → Emisión de comprobante.  
-- **Postcondición:** La cita queda registrada en el repositorio central de datos.  
+- **Postcondición:** La cita queda registrada en el repositorio central de datos (base de datos).  
 
 ---
 
