@@ -14,7 +14,18 @@ El sistema deberá facultar a los usuarios previamente autenticados para concert
 
 ---
 
-### **RF-02: Reprogramación de Citas**
+### **RF-02: Consulta de citas**
+El sistema debe permitirle al usuario consultar su proxima cita, el comprobante y informacion de la misma, en la que se incluye: paciente, tipología de sesión,
+fecha, hora, consultorio asignado, nombre del terapeuta y el estado de la cita
+
+**Caso de Uso CU-02: Consulta de citas**  
+- **Actor:** Usuario autenticado  
+- **Flujo:** Solicita consulta → Sistema proporciona informacion y comprobante de cita proxima
+- **Postcondición:** El usuario visualiza sus compromisos confirmados.
+
+---
+
+### **RF-03: Reprogramación de Citas**
 El sistema deberá permitir la reprogramación de citas previamente registradas.  
 - El administrador podrá efectuar esta acción en situaciones excepcionales (ej. ausencia del terapeuta).  
 - El flujo solicitará la información mínima indispensable para validar la reprogramación.
@@ -110,7 +121,7 @@ El sistema deberá permitir la verificación de identidad mediante código envia
 ### **RNF-05: Visualización de citas venideras**
 El sistema deberá mostrar la información de la cita programada (fecha, hora, nombre del paciente y motivo de consulta) de manera clara y correcta.
 
-**Casl de Uso CU-NF04: Visualizacón de cita**
+**Caso de Uso CU-NF05: Visualizacón de cita**
 
 - **Actor:** Usuario.
 - **Flujo:** Usuario accede al sistema → Sistema muestra la información de la cita.
