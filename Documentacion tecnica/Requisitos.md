@@ -14,46 +14,35 @@ El sistema deberá facultar a los usuarios previamente autenticados para concert
 
 ---
 
-### **RF-02: Visualización de Citas Venideras**
-El sistema deberá proporcionar al usuario una representación clara y estructurada de sus citas futuras, incluyendo: paciente, tipología de sesión, fecha, hora y consultorio asignado.  
-Opcionalmente, se podrá desplegar información complementaria como el nombre del terapeuta y el estado de la cita (confirmada, pendiente, reprogramada).
-
-**Caso de Uso CU-02: Consultar citas venideras**  
-- **Actor:** Usuario autenticado  
-- **Flujo:** Solicita consulta → Sistema despliega listado → Usuario accede a detalles.  
-- **Postcondición:** El usuario visualiza sus compromisos confirmados.  
-
----
-
-### **RF-03: Reprogramación de Citas**
+### **RF-02: Reprogramación de Citas**
 El sistema deberá permitir la reprogramación de citas previamente registradas.  
 - El administrador podrá efectuar esta acción en situaciones excepcionales (ej. ausencia del terapeuta).  
 - El flujo solicitará la información mínima indispensable para validar la reprogramación.
 
-**Caso de Uso CU-03: Reprogramar cita**  
+**Caso de Uso CU-02: Reprogramar cita**  
 - **Actor:** Usuario o administrador  
 - **Flujo:** Solicita reprogramación → Sistema muestra alternativas → Selección → Actualización → Emisión de comprobante.  
 - **Postcondición:** La cita queda registrada con nueva fecha y hora.  
 
 ---
 
-### **RF-04: Sincronización de Disponibilidad en Tiempo Real**
+### **RF-03: Sincronización de Disponibilidad en Tiempo Real**
 El sistema deberá bloquear en tiempo real los horarios seleccionados durante el proceso de concertación o reprogramación, evitando la duplicidad de reservas (**double-booking**).  
 - Se definirá el instante exacto de bloqueo (selección vs confirmación final).
 
-**Caso de Uso CU-04: Bloqueo de horario en tiempo real**  
+**Caso de Uso CU-03: Bloqueo de horario en tiempo real**  
 - **Actor:** Usuario autenticado  
 - **Flujo:** Selección de horario → Bloqueo temporal → Confirmación → Bloqueo definitivo.  
 - **Postcondición:** El horario queda reservado de manera exclusiva.  
 
 ---
 
-### **RF-05: Generación de Comprobante de Cita**
+### **RF-04: Generación de Comprobante de Cita**
 El sistema deberá emitir un comprobante digital tras la creación o reprogramación de una cita.  
 - Datos: folio, terapeuta, tipología de sesión, fecha, hora y consultorio.  
 - Disponible tanto en Web como en WhatsApp.
 
-**Caso de Uso CU-05: Emitir comprobante de cita**  
+**Caso de Uso CU-04: Emitir comprobante de cita**  
 - **Actor:** Usuario autenticado  
 - **Flujo:** Confirmación de cita → Generación de comprobante → Entrega al usuario.  
 - **Postcondición:** El usuario recibe constancia oficial de su cita.  
@@ -71,19 +60,10 @@ El chatbot deberá permitir la concertación de citas mediante un flujo conversa
 
 ---
 
-### **RF-W02: Visualización de citas venideras vía chatbot**
-El chatbot deberá mostrar la próxima cita y ofrecer opciones de reprogramación o cancelación.
-
-**Caso de Uso CU-W02: Consultar próxima cita vía chatbot**  
-- **Actor:** Usuario  
-- **Flujo:** Solicita cita → Chatbot despliega detalles → Opciones de reprogramar/cancelar.  
-
----
-
-### **RF-W03: Reprogramación de citas vía chatbot**
+### **RF-W02: Reprogramación de citas vía chatbot**
 El chatbot deberá permitir la reprogramación de citas mostrando horarios disponibles.
 
-**Caso de Uso CU-W03: Reprogramar cita vía chatbot**  
+**Caso de Uso CU-W02: Reprogramar cita vía chatbot**  
 - **Actor:** Usuario  
 - **Flujo:** Solicita reprogramar → Nueva fecha → Horarios → Selección → Confirmación → Comprobante.  
 
@@ -124,3 +104,13 @@ El sistema deberá permitir la verificación de identidad mediante código envia
 **Caso de Uso CU-NF04: Verificación vía código WhatsApp**  
 - **Actor:** Usuario  
 - **Flujo:** Sistema envía código → Usuario ingresa → Validación → Acceso a citas.  
+
+---
+
+### **RNF-05: Visualización de citas venideras**
+El sistema deberá mostrar la información de la cita programada (fecha, hora, nombre del paciente y motivo de consulta) de manera clara y correcta.
+
+**Casl de Uso CU-NF04: Visualizacón de cita**
+
+- **Actor:** Usuario.
+- **Flujo:** Usuario accede al sistema → Sistema muestra la información de la cita.
