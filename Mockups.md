@@ -1,6 +1,6 @@
 # Documentación
 
-La siguiente tabla abarca todos los elementos, sus tipos y sus funciones en el programa
+La siguiente tabla abarca todos los elementos, sus tipos y sus funciones en el programa:
 
 | Elemento | Tipo | Función |
 |----------|------|---------
