@@ -19,6 +19,7 @@ La siguiente tabla abarca todos los elementos, sus tipos y sus funciones en el p
 | Texto "Agendar" | Texto | Titulo |
 | Texto "Reagendar" | Texto | Titulo |
 | Botón "Fecha" | Botón | Presionar el dia de la cita |
+| Opción "Hora" | Opción | Seleccionar la hora |
 | Input "Motivo" | Input | Escribir el motivo |
 | Botón "Crear comprobante" | Botón | Te manda el comprobante |
 | Texto "Comprobante creado" | Texto | Información |
