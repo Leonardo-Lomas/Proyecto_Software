@@ -15,13 +15,30 @@ El sistema deberá facultar a los usuarios previamente autenticados para program
 ---
 
 ### **RF-02: Consulta de citas**
-El sistema debe permitirle al usuario consultar su proxima cita, el comprobante y informacion de la misma, en la que se incluye: paciente, tipología de sesión,
-fecha, hora, consultorio asignado, nombre del terapeuta y el estado de la cita
+El sistema debe permitirle al usuario consultar su proxima cita, mostrando los datos que la cita contiene.
 
-**Caso de Uso CU-02: Consulta de citas**  
-- **Actor:** Usuario autenticado  
-- **Flujo:** Solicita consulta → Sistema proporciona informacion y comprobante de cita proxima
-- **Postcondición:** El usuario visualiza sus compromisos confirmados.
+**Actores involucrados:**
+- Usuario
+- Sistema (Web/WhatsApp)
+
+**Flujo principal:**
+1. Eleccion del servicio (visualización de cita).
+2. El sistema consulta la informacion de la base de datos
+3. Se muestra la informacion de la cita en un formato estandar.
+4. Se le permite al usuario acceder la comprobante emitido previamente (cuando se agendo la cita).
+
+**Postcondicion:** El usuario puede visualizar la informacion de su cita previamente agendada
+
+**Criterios de Aceptacion:**
+- La informacion mostrada coincide con la informacion de la cita registrada en la base de datos
+- La informacion del comprobante es igual a la de la informacion emitida.
+
+**Restricciones:**
+- Unicamente se puede visualizar la informacion de la cita proxima (regla de negocio, no puede ver su historial previo).
+- No se permite el acceso a la informacion de citas pasadas.
+- No debe mostrarse informacion sensible.
+- Solo el usuario autenticado puede acceder al servicio.
+- La consulta unicamente es por medio de los canales oficiales (Web y WhatsApp).
 
 ---
 
