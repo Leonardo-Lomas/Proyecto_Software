@@ -2,19 +2,30 @@
 
 ## Requisitos Funcionales
 
-### **RF-01: Concertación Multicanal de Citas (Web y WhatsApp)**
-El sistema deberá facultar a los usuarios previamente autenticados para concertar citas terapéuticas mediante los canales habilitados (Web y WhatsApp).  
+### **RF-01: Programación Multicanal de Citas (Web y WhatsApp)**
+El sistema deberá facultar a los usuarios previamente autenticados para programar citas terapéuticas mediante los canales habilitados (Web y WhatsApp).  
 - El flujo de concertación contemplará la elección del profesional por parte del usuario o, en su defecto, la asignación automática conforme a la disponibilidad.  
-- Se garantizará la coherencia y sincronización de la información entre ambos canales.
+- Se garantizará la coherencia y sincronización de la información entre ambos canales, evitando duplicidades o incosistencias.
 
-**Caso de Uso CU-01: Concertar cita multicanal**  
+**Caso de Uso CU-01: Programar cita multicanal**  
 - **Actor:** Usuario autenticado  
 - **Flujo:** Acceso → Selección de opción → Elección de fecha/hora/profesional → Confirmación → Emisión de comprobante.  
-- **Postcondición:** La cita queda registrada en el repositorio central de datos.  
+- **Postcondición:** La cita queda registrada en el repositorio central de datos (base de datos).  
 
 ---
 
-### **RF-02: Reprogramación de Citas**
+### **RF-02: Consulta de citas**
+El sistema debe permitirle al usuario consultar su proxima cita, el comprobante y informacion de la misma, en la que se incluye: paciente, tipología de sesión,
+fecha, hora, consultorio asignado, nombre del terapeuta y el estado de la cita
+
+**Caso de Uso CU-02: Consulta de citas**  
+- **Actor:** Usuario autenticado  
+- **Flujo:** Solicita consulta → Sistema proporciona informacion y comprobante de cita proxima
+- **Postcondición:** El usuario visualiza sus compromisos confirmados.
+
+---
+
+### **RF-03: Reprogramación de Citas**
 El sistema deberá permitir la reprogramación de citas previamente registradas.  
 - El administrador podrá efectuar esta acción en situaciones excepcionales (ej. ausencia del terapeuta).  
 - El flujo solicitará la información mínima indispensable para validar la reprogramación.
@@ -110,7 +121,7 @@ El sistema deberá permitir la verificación de identidad mediante código envia
 ### **RNF-05: Visualización de citas venideras**
 El sistema deberá mostrar la información de la cita programada (fecha, hora, nombre del paciente y motivo de consulta) de manera clara y correcta.
 
-**Casl de Uso CU-NF04: Visualizacón de cita**
+**Caso de Uso CU-NF05: Visualizacón de cita**
 
 - **Actor:** Usuario.
 - **Flujo:** Usuario accede al sistema → Sistema muestra la información de la cita.
