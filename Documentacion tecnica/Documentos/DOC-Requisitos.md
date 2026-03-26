@@ -1,4 +1,4 @@
-# 📌 Especificación del Sistema de Agenda Terapéutica
+# Especificaciónes de Requisitos del Sistema de Agendamiento de Citas Terapéuticas
 
 ## Requisitos Funcionales
 
@@ -65,7 +65,7 @@ El sistema deberá emitir un comprobante digital tras la creación o reprogramac
 ### **RF-W01: Programacion de citas vía chatbot**
 El chatbot deberá permitir la programacion de citas mediante un flujo conversacional estructurado: fecha → horarios → selección → datos → confirmación.
 
-**Caso de Uso CU-W01: Concertar cita vía chatbot**  
+**Caso de Uso CU-W01: programacion cita vía chatbot**  
 - **Actor:** Usuario (nuevo o recurrente)  
 - **Flujo:** Fecha → Horarios → Selección → Datos → Confirmación → Comprobante.  
 
@@ -82,35 +82,92 @@ El chatbot deberá permitir la reprogramación de citas mostrando horarios dispo
 
 ## Requisitos No Funcionales
 
-### **RNF-01: Privacidad y Seguridad de Datos**
-El sistema deberá cumplir con normativas de protección de datos médicos, evitando el almacenamiento de información sensible en registros temporales.
+### **RNF-01: Integridad de la informacion**
+El sistema deberá garantizar que la información mostrada en consultas, comprobantes y notificaciones coincida exactamente con la registrada en la base de datos.
 
-**Caso de Uso CU-NF01: Protección de datos sensibles**  
-- **Actor:** Sistema  
-- **Flujo:** Evita almacenamiento temporal → Cumple normativas.  
+**Actores involucrados:**
+- Sistema
+
+**Flujo principal:**
+1. El sistema accede a la base de datos
+2. El sistema valida que la informacion mostrada al usuario sea la misma que aparece en la base de datos.
+
+**Postcondicion:** La informacion presentada al usuario es la registrada en la base de datos
+
+**Criterios de aceptacion:**
+- Los datos de la cita mostrados coinciden con los registrados en la base de datos.
+- La informacion de la base de datos esta actualizada con cada accion (agendamiento y reprogramacion).
+- La informacion debe de estar sincronizada con cada operacion.
+
+**Restricciones:**
+- Toda informacion mostrada debe de estar previamente en la base de datos.
+- No se permite mostrar informacion desactualizada.
+
+**RFN relacionados:**
+- RF-01
+- RF-02
+- RF-03
+- RF-04
+
+### **RNF-02: Usabilidad del Chatbot (WhatsApp)**
+El flujo conversacional del chatbot le permitira al usuario poder usarlo sin necesidad de ayuda externa, priorizando un diseño intuitivo y de facil seguimiento.
+
+**Actores involucrados:**
+- Usuario
+- Sistema (WhatsApp)
+
+**Flujo principal:**
+1. El usuario entra al WhatsApp
+2. El Chatbot orienta al usuario por medio de mensajes claros y predefinidos.
+
+**Postcondicion:** El usuario completa el flujo del servicio seleccionado
+
+**Criterios de Aceptacion:**
+- Los mensajes son breves y con claridad.
+- El flujo no es extenso ni arduio.
+- El chatbot esta hecho por medio de menus desplegables (botones).
+- Conversaciones predefinidas.
+- Diseño intuitivo.
+
+**Restricciones:**
+- Unicamente estara disponible en español
+- No debe solicitar informacion sensible.
 
 ---
 
-### **RNF-02: Usabilidad del Chatbot**
-El flujo conversacional deberá ser intuitivo, con opciones enumeradas y mínima escritura libre.
+### **RNF-03: Identificacion sin Inicio de sesion**
+Permite que el usuario sea identificado automáticamente en WhatsApp/Web mediante su número telefónico, sin necesidad de login adicional.
 
-**Caso de Uso CU-NF02: Interacción simplificada**  
-- **Actor:** Usuario  
-- **Flujo:** Interacción con opciones → Minimiza errores.  
+**Actores involucrados:**
+- Usuario
+- Sistema
 
----
+**Flujo principal:**
+1. El sistema identifica al usuario por su número telefónico registrado.
+2. Valida contra la base de datos sin login adicional, localizando al usuario.
 
-### **RNF-03: Disponibilidad**
-El sistema deberá garantizar disponibilidad continua (**24/7**) con mecanismos de respaldo.
+**Postcondición:** El usuario accede a sus citas desde WhatsApp/Web con su numero telefonico.
 
-**Caso de Uso CU-NF03: Acceso permanente**  
-- **Actor:** Usuario  
-- **Flujo:** Accede en cualquier momento → Sistema responde sin interrupciones.  
+**Criterios de Aceptacion:**
+- El sistema reconoce al usuario por número único.
+- No se permite acceso si el número no está registrado.
 
----
+**Restricciones:**
+- Aplica en ambos modulos (Web/WhatsApp).
+- Solo se permite un usuario por numero telefonico.
 
-### **RNF-04: Identificación sin inicio de sesión**
-El sistema deberá permitir la verificación de identidad mediante código enviado por WhatsApp.
+
+### **RNF-04: Visualizacion de Citas proximas**
+Se muestra la informacion de la cita proxima previamente agendada en el sistema.
+
+**Actores involucrados:**
+- Usuario
+- Sistema
+
+**Flujo principal:**
+1. El usuario solicita la informacion de su cita.
+2. El sistema genera la previsualizacion de la informacion.
+3. El sistema recupera/genera el comprobante y se lo muestra al usuario.
 
 **Caso de Uso CU-NF04: Verificación vía código WhatsApp**  
 - **Actor:** Usuario  
