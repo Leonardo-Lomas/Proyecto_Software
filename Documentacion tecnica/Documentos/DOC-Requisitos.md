@@ -62,8 +62,8 @@ El sistema deberá emitir un comprobante digital tras la creación o reprogramac
 
 ## 📱 Módulo WhatsApp
 
-### **RF-W01: Concertación de citas vía chatbot**
-El chatbot deberá permitir la concertación de citas mediante un flujo conversacional estructurado: fecha → horarios → selección → datos → confirmación.
+### **RF-W01: Programacion de citas vía chatbot**
+El chatbot deberá permitir la programacion de citas mediante un flujo conversacional estructurado: fecha → horarios → selección → datos → confirmación.
 
 **Caso de Uso CU-W01: Concertar cita vía chatbot**  
 - **Actor:** Usuario (nuevo o recurrente)  
