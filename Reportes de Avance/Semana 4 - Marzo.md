@@ -27,8 +27,8 @@
 |-------------------------------|--------------------|----------|----------|----------|------------------------|--------------------|--------------------|
 | Lomas Lopez Leonardo          | 3                  | 3        |  0       |  0       | 0                      | 1                  | 33.33%                |
 | Yupit Colli Rodrigo Irineo    | 3                  | 3        |  0       |  0       | 0                      | 3                  | 100.00%                |
-| Conde Chabarría Josemaría     | 3                  | 3        |  0       |  0       | 0                      | 0                  | 00.00%                |
-| Osorio Muñoz Jaime Armando    | 3                  | 3        |  0       |  0       | 0                      | 0                  | 00.00%                |
+| Conde Chabarría Josemaría     | 3                  | 3        |  0       |  0       | 0                      | 1                  | 33.33%                |
+| Osorio Muñoz Jaime Armando    | 3                  | 3        |  0       |  0       | 0                      | 1                  | 33.33%                |
 | Gutierrez Lopez Miguel Angel  | 3                  | 3        |  0       |  0       | 0                      | 1                  | 33.33%                |
 
 > **Puntos por Issue:** S(small) = 1 - M(medium) = 2 - L(large) = 3 
@@ -49,12 +49,12 @@
 3. Conde Chabarría Josemaría
     - [X] Issue #13 - 1 pts: Definir el lenguaje de programacion, framework y/o tecnologias externas
     - [X] Issue #14 - 1 pts: Creacion de Diagrama Caso de Uso: Agendar Cita
-    - [X] Issue #29 - 1 pts: Creacion Diagrama de clases
+    - [O] Issue #29 - 1 pts: Creacion Diagrama de clases
 
 4. Osorio Muñoz Jaime Armando
-    - [X] Issue #32 - 1 pts: Crear el Requisito Funcional (RF) - Generacion de Comprobante de Cita
+    - [O] Issue #32 - 1 pts: Crear el Requisito Funcional (RF) - Generacion de Comprobante de Cita
     - [X] Issue #11 - 1 pts: Redefinir/Actualizar el archivo Mockup del Sistema
-    - [X] Issue #11 - 1 pts: Creacion del diagrama con las secciones principales del sistema SiteMap
+    - [X] Issue #12 - 1 pts: Creacion de Diagrama Site Map
 
 5. Gutierrez Lopez Miguel Angel
     - [O] Issue #07 - 1 pts: Crear el Requisito Funcional (RF) - Consulta de Citas
@@ -67,17 +67,17 @@
 
 - **Total de Issues Asignados:** 15
 
-- **Total Completados:** 5
+- **Total Completados:** 9
 
 - **Total Fuera de Tiempo/Forma:** 0
 
 - **Total Pendientes:** 10
 
-- **Promedio de Cumplimiento Grupal:** 33.33%
+- **Promedio de Cumplimiento Grupal:** 60.00%
 
-- **Meta de Diseño:** 39.00%
-    - **Diseño - Requerimentos** 60.00%
-    - **Diseño - Documentacion** 18.00%
+- **Meta de Diseño:** 53.5.00%
+    - **Diseño - Requerimentos** 80.00%
+    - **Diseño - Documentacion** 27.00%
     >Estas metricas son obtenidos de los milestones del proyecto (verificables en cualquier momento).
 ---
 
@@ -86,6 +86,7 @@
 - Falta claridad con el proyecto a pesar de tener todos los artefactos creados.
 - Avance muy lento.
 - Deficiencia en la administracion de las actividades semanales y planificacion de las futuras actividades.
+- Para antes de final de mes debe de haber quedado completado toda la seccion de diseño
 
 ---
 
