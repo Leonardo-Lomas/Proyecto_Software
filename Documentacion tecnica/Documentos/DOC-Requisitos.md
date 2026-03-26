@@ -3,83 +3,314 @@
 ## Requisitos Funcionales
 
 ### **RF-01: Programación Multicanal de Citas (Web y WhatsApp)**
-El sistema deberá facultar a los usuarios previamente autenticados para programar citas terapéuticas mediante los canales habilitados (Web y WhatsApp).  
-- El flujo de concertación contemplará la elección del profesional por parte del usuario o, en su defecto, la asignación automática conforme a la disponibilidad.  
-- Se garantizará la coherencia y sincronización de la información entre ambos canales, evitando duplicidades o incosistencias.
 
-**Caso de Uso CU-01: Programar cita multicanal**  
-- **Actor:** Usuario autenticado  
-- **Flujo:** Acceso → Selección de opción → Elección de fecha/hora/profesional → Confirmación → Emisión de comprobante.  
-- **Postcondición:** La cita queda registrada en el repositorio central de datos (base de datos).  
+El sistema debe permitir a los usuarios previamente autenticados programar citas terapéuticas mediante los canales habilitados (Web y WhatsApp), cumpliendo con un flujo principal de registro de datos.
+
+**Actores involucrados:**
+- Usuario 
+- Sistema (Web/WhatsApp)
+
+**Flujo principal:**
+1. Eleccion de servicio (agendamiento de cita).
+2. Eleccion del Terapeuta.
+3. El sistema busca la disponibilidad de fechas y horarios a mostrar en base al terapeuta seleccionado.
+4. Seleccion de la fecha.
+5. Seleccion del horario.
+6. Confirmacion de los datos.
+7. Se emite una previsualizacion de los datos de la cita agendada.
+8. Emision del comprobante.
+
+La eleccion del terapeuta, involucra que se desplieguen las **fechas**, **horarios disponibles** y **consultorio** para agendar con dicho terapeuta.
+
+**Postcondición:** La cita queda registrada en el repositorio central de datos (base de datos).  
+
+**Criterios de Aceptacion:**
+- La cita debe de quedar registrada en la base de datos.
+- Se debe de emitir el comprobante con los datos previamente aceptados por el usuario.
+- El sistema le asigna un consultorio valido al usuario (por ver si es automatico o el consultorio es por terapeuta).
+- La aceptacion de la cita debe contener una previsualizacion de los datos de la cita obtenidos del usuario.
+- Solo se permite tener una cita agendada en el sistema por usuario, no se permite un agendamiento multiple.
+
+**Restricciones**:
+- La seleccion de la fecha estara limita a 7 dias habiles al momento de la consulta (regla de negocio por simplicidad).
+- El horario de agendamiento es desde las 10:00 a.m - 6:00 p.m,
+- Las fechas y horarios mostrados corresponden a la disponibilidad del terapeuta mostrado.
+- Solo el usuario autenticado puede acceder al servicio.
 
 ---
 
 ### **RF-02: Consulta de citas**
-El sistema debe permitirle al usuario consultar su proxima cita, el comprobante y informacion de la misma, en la que se incluye: paciente, tipología de sesión,
-fecha, hora, consultorio asignado, nombre del terapeuta y el estado de la cita
+El sistema debe permitirle al usuario consultar su proxima cita, mostrando los datos que la cita contiene.
 
-**Caso de Uso CU-02: Consulta de citas**  
-- **Actor:** Usuario autenticado  
-- **Flujo:** Solicita consulta → Sistema proporciona informacion y comprobante de cita proxima
-- **Postcondición:** El usuario visualiza sus compromisos confirmados.
+**Actores involucrados:**
+- Usuario
+- Sistema (Web/WhatsApp)
+
+**Flujo principal:**
+1. Eleccion del servicio (visualización de cita).
+2. El sistema consulta la informacion de la base de datos
+3. Se muestra la informacion de la cita en un formato estandar.
+4. Se le permite al usuario acceder la comprobante emitido previamente (cuando se agendo la cita).
+
+**Postcondicion:** El usuario puede visualizar la informacion de su cita previamente agendada
+
+**Criterios de Aceptacion:**
+- La informacion mostrada coincide con la informacion de la cita registrada en la base de datos
+- La informacion del comprobante es igual a la de la informacion emitida.
+
+**Restricciones:**
+- Unicamente se puede visualizar la informacion de la cita proxima (regla de negocio, no puede ver su historial previo).
+- No se permite el acceso a la informacion de citas pasadas.
+- No debe mostrarse informacion sensible.
+- Solo el usuario autenticado puede acceder al servicio.
+- La consulta unicamente es por medio de los canales oficiales (Web y WhatsApp).
 
 ---
 
 ### **RF-03: Reprogramación de Citas**
-El sistema deberá permitir la reprogramación de citas previamente registradas.  
-- El administrador podrá efectuar esta acción en situaciones excepcionales (ej. ausencia del terapeuta).  
-- El flujo solicitará la información mínima indispensable para validar la reprogramación.
+El sistema deberá permitir la reprogramación de citas previamente registradas en el sistema.  
 
-**Caso de Uso CU-02: Reprogramar cita**  
-- **Actor:** Usuario o administrador  
-- **Flujo:** Solicita reprogramación → Sistema muestra alternativas → Selección → Actualización → Emisión de comprobante.  
-- **Postcondición:** La cita queda registrada con nueva fecha y hora.  
+**Actores involucrados:**
+- Usuario autenticado.
+- Administrador(en casos especiales).
+- Sistema (Web/WhatsApp)
 
----
+**Flujo principal:**
+1. Eleccion del servicio (Reprogramacion de cita).
+2. Muestra la informacion cita previamente registrada.
+3. Se le solicita al usuario/administrador una confirmacion para reprogramar la cita.
+4. Se solicita la nueva fecha de la cita.
+5. Se solicita el nuevo horario de la cita.
+6. Confirmacion de los datos.
+7. Se emite una previsualizacion de los datos de la cita reprogramada.
+8. Emision del comprobante.
 
-### **RF-03: Sincronización de Disponibilidad en Tiempo Real**
-El sistema deberá bloquear en tiempo real los horarios seleccionados durante el proceso de concertación o reprogramación, evitando la duplicidad de reservas (**double-booking**).  
-- Se definirá el instante exacto de bloqueo (selección vs confirmación final).
+La seleccion del terapeuta es inamovible, por lo cual solo se despliegan las fechas y horarios disponibles para el terapeuta
 
-**Caso de Uso CU-03: Bloqueo de horario en tiempo real**  
-- **Actor:** Usuario autenticado  
-- **Flujo:** Selección de horario → Bloqueo temporal → Confirmación → Bloqueo definitivo.  
-- **Postcondición:** El horario queda reservado de manera exclusiva.  
+**Postcondicion:** La cita queda reprogramada en el sistema con los nuevos datos
+
+**Criterios de Aceptacion:**
+- La cita queda reprogramada en la base de datos
+- La informacion emitida en el comprobante corresponde a los nuevos datos
+- El administrador puede reprogramar una cita, avisando al usuario por el medio de contacto que su cita a sido reprogramada.
+
+**Restricciones:**
+- Solo el usuario autenticado puede acceder al servicio.
+- Unicamente se puede alterar la fecha y hora.
+- No es posible cambiar de terapeuta.
+- Las fechas y horarios mostrados son los disponibles para el terapeuta seleccionado inicialmente.
 
 ---
 
 ### **RF-04: Generación de Comprobante de Cita**
-El sistema deberá emitir un comprobante digital tras la creación o reprogramación de una cita.  
-- Datos: folio, terapeuta, tipología de sesión, fecha, hora y consultorio.  
-- Disponible tanto en Web como en WhatsApp.
+El sistema deberá emitir un comprobante digital en formato PDF tras la creación de la cita y/o la reprogramacion de la cita.
 
-**Caso de Uso CU-04: Emitir comprobante de cita**  
-- **Actor:** Usuario autenticado  
-- **Flujo:** Confirmación de cita → Generación de comprobante → Entrega al usuario.  
-- **Postcondición:** El usuario recibe constancia oficial de su cita.  
+**Actores Involucrados:**
+- Usuario
+- Sistema
+
+**Flujo principal:**
+1. El sistema genera el comprobante (en caso de ser agendamiento) o busca el comprobante generado para dicha cita (por medio de tecnologias externas se crea el comprobante).
+3. El comprobante es enviado al usuario.
+
+**Postcondicion:** El comprobante de la cita debe ser generado y estar accesible para su visualizacion
+
+**Criterios de Aceptacion:**
+- El comprobante debe de contener la informacion siguiente:
+    - Fecha de la generacion del comprobante.
+    - Nombre del paciente.
+    - Nombre del terapeuta.
+    - Fecha de la cita.
+    - Hora de la cita.
+    - Consultorio de la cita.
+- Debe de ser emitido en un formato PDF.
+- Debe de ser accesible posteriormente por medio de la opcion de visualizacion de cita.
+- Debe contener un folio.
+- La informacion debe ser exactamente la misma que esta registrada en la base de datos.
+
+**Restricciones:**
+- El comprobante no debe de incluir informacion medica sensible.
+- Unicamente estara disponible por los medios canales oficiales habilitados (Web y WhatsApp).
+- Un unico comprobante por cada cita registrada en la base de datos. 
+
+---
+
+### **RF-05: Autenticacion de Usuarios**
+El sistema debe de permitir a los posibles usuarios autenticarse para poder acceder a los servicios que ofrece el sistema (agendamiento, reprogramacion y consulta).
+
+**Actores involucrados:**
+- Posible usuario
+- Sistema
+
+**Flujo principal:**
+1. El usuario accede al sistema (Web).
+2. Se solicita el llenado de un formulario con informacion basica.
+3. El sistema envia la OTP al numero telefonico registrado.
+4. El usuario ingresa la OTP enviada.
+5. Sistema valida la OTP.
+6. Se registra exitosamente.
+7. Queda guardado el usuario con su informacion en la base de datos.
+8. El usuario puede ingresar los servicios (Web/WhatsApp).
+
+> OTP = One-Time-Password
+
+**Postcondicion:** El usuario queda verificado para poder usar los servicios proveidos en los canales oficiales (Web/WhatsApp).
+
+**Criterios de Aceptacion:**
+- El sistema rechaza una OTP distinta a la enviada al numero telefonico.
+- El usuario queda registrado en el sistema.
+- Se permite el acceso a los servicios del sistema a los usuarios autenticados.
+- Se rechazan OTP expiradas o invalidas.
+- Se permite enviar una nueva OTP.
+- El formulario de informacion basica debe de contener:
+    - Nombre completo.
+    - Numero telefonico.
+    - Correo electronico (opcional).
+    - Fecha de nacimiento.
+    - Sexo (Masculino/Femenino).
+    - Preferencia de contacto (en caso de tener el correo electronico llenado) WhatsApp o Correo Electronico.
+
+**Restricciones:**
+- La OTP enviada expira despues de un tiempo especifico (tentativamente 5 minutos).
+- El numero telefonico queda asociado al usuario, este numero no puede estar vinculado a dos usuarios distintos.
+- Solo se puede hacer la verificacion por el canal Web.
+- En caso de acceder al modulo Web sin un numero autenticado, se mandara un enlace a la pagina web para poder registrarse y usar los servicios
+
+---
+
+### **RF-06: Notificaciones por medio de contacto (WhatsApp)**
+El sistema debe enviar notificaciones por el medio de contacto especificado por el usuario, con dos posibles escenarios:
+1. Recordatorio de la cita con un dia de anticipacion.
+2. Recordatorio por repgrogramacion de cita realizada por un administrador.
+
+**Actores involucrados:**
+- Sistema
+- Usuario
+
+**Flujo principal:**
+1. El sistema detecta una reprogramacion de la cita (hecho por un administrador) y/o la cita esta proxima (con un dia de anticipacion).
+2. El sistema procesa la informacion de la notificacion con un formato estandarizado.
+3. La notificacion es enviada al usuario por el medio de contacto especificado (WhatsApp).
+
+**Postcondicion:** La notificacion es enviada al medio de contacto del usuario (WhatsApp).
+
+**Criterios de Aceptacion:**
+- El sistema envia la notificacion exitosamente.
+- La informacion de la notificacion es correcta con respecto a la que esta en la base de datos.
+- Se envia una notififacion por cada reprogramacion de la cita hecha por un administrador
+- Se registra la fecha y hora del envio de la notificacion
+- La informacion de la reprogramacion incluye la siguiente informacion:
+    1. Nombre del paciente.
+    2. Antiguia fecha y hora elegida.
+    3. Nueva fecha y hora estipulada
+    4. Mensaje de saludo y despedida (saludos, gracias por su atention).
+    5. Acceso al comprobante.
+    6. Explicacion del reagendamiento (mensaje corto y breve).
+- La informacion de la cita proxima incluye la siguiente informacion:
+    1. Nombre del paciente.
+    2. Fecha y hora de la cita.
+    3. Consultorio de la cita.
+    4. Terapeuta asignado.
+    5. Mensaje de saludo y despedida (breve).
+    6. Mensaje "Su cita agendada {fecha y hora} esta proxima, acuda en tiempo y forma" (ejemplo).
+
+**Restricciones:**
+- no se envian multiples recordatorios de citas proximas.
+- La notificacion solo puede ser enviada via WhatsApp.
+- No se incluye ninguna informacion sensible en la informacion.
+- Solo puede ocurrir el envio por un medio de contacto valido y registrado en el sistema.
 
 ---
 
 ## 📱 Módulo WhatsApp
 
-### **RF-W01: Programacion de citas vía chatbot**
-El chatbot deberá permitir la programacion de citas mediante un flujo conversacional estructurado: fecha → horarios → selección → datos → confirmación.
+### **RF-W01: Agendamiento de citas vía chatbot**
+El chatbot deberá permitir el agendamiento de citas mediante un flujo conversacional estructurado, claro y breve.
 
-**Caso de Uso CU-W01: programacion cita vía chatbot**  
-- **Actor:** Usuario (nuevo o recurrente)  
-- **Flujo:** Fecha → Horarios → Selección → Datos → Confirmación → Comprobante.  
+**Actores involucrados:**
+- Usuario
+- Sistema (WhatsApp).
 
----
+**Flujo principal:**
+1. El usuario solicita agendar cita.
+2. El chatbot muestra la lista de terapeutas disponibles.
+3. El usuario selecciona terapeuta.
+4. El chatbot consulta la disponibilidad del terapeuta y muestra fechas disponibles.
+5. El usuario selecciona fecha.
+6. El chatbot muestra horarios disponibles para esa fecha.
+7. El usuario selecciona horario.
+8. El chatbot solicita la confirmacion de los datos
+9. El sistema registra la cita en la base de datos y genera comprobante.
+
+**Postcondición:** La cita queda registrada en el repositorio central de datos (base de datos).  
+
+**Criterios de Aceptacion:**
+- El flujo no tiene un numero mayor a 7 pasos.
+- Los mensajes son claros y en español.
+- El comprobante se genera automáticamente tras la confirmación.
+
+**Restricciones**:
+- No se solicita información sensible.
+- Solo usuarios autenticados pueden agendar.
 
 ### **RF-W02: Reprogramación de citas vía chatbot**
-El chatbot deberá permitir la reprogramación de citas mostrando horarios disponibles.
+El chatbot debe permitir al usuario reprogramar citas previamente agendadas en el sistema.
 
-**Caso de Uso CU-W02: Reprogramar cita vía chatbot**  
-- **Actor:** Usuario  
-- **Flujo:** Solicita reprogramar → Nueva fecha → Horarios → Selección → Confirmación → Comprobante.  
+**Actores involucrados:**
+- Usuario
+- Sistema (WhatsApp).
+
+**Flujo principal:**
+1- El usuario solicita reprogramar cita.
+2- El chatbot muestra la cita actual registrada.
+3- El usuario confirma la intención de reprogramar.
+4- El chatbot consulta la disponibilidad del mismo terapeuta y muestra nuevas fechas.
+5- El usuario selecciona fecha.
+6- El chatbot muestra horarios disponibles para esa fecha.
+7- El usuario selecciona horario.
+8- Se pide la confirmacion del usuario para reagendar la cita con los nuevos datos.
+8- El sistema actualiza la cita en la base de datos y genera comprobante actualizado.
+
+**Postcondición:** La cita queda registrada en el repositorio central de datos (base de datos).  
+
+**Criterios de Aceptacion:**
+- El terapeuta no puede cambiarse.
+- El comprobante actualizado se envía al usuario.
+- La información mostrada coincide con la base de datos.
+
+**Restricciones**:
+- Solo usuarios autenticados pueden reprogramar.
+- No se permite modificar datos distintos a fecha y hora.
 
 ---
 
+### **RFW-03: Consulta de cita via Chatbot**
+El chatbot debe permitir al usuario consultar su próxima cita mediante un flujo conversacional, mostrando la información registrada en la base de datos y el comprobante asociado.
+
+**Actores involucrados:**
+- Usuario.
+- Sistema (WhatsApp).
+
+**Flujo principal:**
+1. El usuario solicita consultar su proxima cita.
+2. El chatbot valida la identidad del usuario mediante su número telefónico registrado.
+3. El sistema consulta la base de datos y obtiene la información de la cita próxima.
+4. El chatbot muestra al usuario los datos de la cita en formato estandarizado (fecha, hora, terapeuta, consultorio).
+5. El chatbot ofrece acceso al comprobante previamente emitido.
+
+**Postcondición:** El usuario visualiza la información de su próxima cita y puede acceder al comprobante asociado.
+
+**Criterios de Aceptacion:**
+- La información mostrada coincide exactamente con la registrada en la base de datos.
+- El comprobante accesible contiene los mismos datos que la cita registrada.
+- El flujo conversacional es claro y no excede 5 pasos.
+- No se muestra información sensible ni citas pasadas.
+
+**Restricciones**:
+- Solo usuarios autenticados pueden acceder a la consulta.
+- La consulta se limita a la próxima cita registrada (no historial).
+
+---
 ## Requisitos No Funcionales
 
 ### **RNF-01: Integridad de la informacion**
@@ -169,16 +400,56 @@ Se muestra la informacion de la cita proxima previamente agendada en el sistema.
 2. El sistema genera la previsualizacion de la informacion.
 3. El sistema recupera/genera el comprobante y se lo muestra al usuario.
 
-**Caso de Uso CU-NF04: Verificación vía código WhatsApp**  
-- **Actor:** Usuario  
-- **Flujo:** Sistema envía código → Usuario ingresa → Validación → Acceso a citas.  
+**Postcondicion:** El usuario visualiza información de su cita próxima.
 
----
+**Criterios de Aceptacion:**
+- La información coincide con la registrada en la base de datos.
+- La previsualizacion de la informacion es completa y legible
+- Siempre debe de ser posible visualizar los datos de la cita
 
-### **RNF-05: Visualización de citas venideras**
-El sistema deberá mostrar la información de la cita programada (fecha, hora, nombre del paciente y motivo de consulta) de manera clara y correcta.
+**Restricciones:**
+- Solo usuarios autenticados pueden acceder a su informacion.
 
-**Caso de Uso CU-NF05: Visualizacón de cita**
+### **RNF-05: Privacidad y Seguridad de Datos**
+Protege la información personal de los usuarios mediante cifrado, control de accesos y cumplimiento de normativas de protección de datos.
 
-- **Actor:** Usuario.
-- **Flujo:** Usuario accede al sistema → Sistema muestra la información de la cita.
+**Actores involucrados:**
+- Sistema
+
+**Flujo principal:**
+1. Se pasa la informacion a la base de datos por medios seguros
+2. Se controlan los accesos mediante las OTP.
+
+>OTP: One Time Password.
+
+**Postcondicion:** Los datos de los usuarios quedan protegidos en el sistema.
+
+**Criterios de Aceptacion:**
+- La informacion llega de forma segura a la base de datos.
+- Cumplimiento de normativas de proteccion de datos.
+
+**Restriciones:**
+- No se comparte información con terceros sin consentimiento.
+
+### **RNF-06: Usabilidad de la pagina Web**
+Garantiza que la interfaz web sea clara, responsiva y fácil de usar para agendar, consultar y reprogramar citas.
+
+**Actores involucrados:**
+- Usuario
+- Sistema
+
+**Flujo principal:**
+1. El usuario accede al portal web.
+2. El sistema presenta formularios y opciones claras.
+
+**Postcondición:** El usuario completa el agendamiento, consulta o reprogramación sin dificultad alguna.
+
+**Criterios de Aceptacion:**
+- Interfaz responsiva (Escritorio).
+- Formularios con validaciones inmediatas 
+- Flujo de agendamiento, reprogramacion y consulta de cita ≤ 7 pasos.
+- Diseño intuitivo y de facil uso.
+
+**Restricciones**:
+- Solo disponible en idioma español.
+
