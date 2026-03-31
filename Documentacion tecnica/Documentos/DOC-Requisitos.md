@@ -340,29 +340,31 @@ El sistema deberá garantizar que la información mostrada en consultas, comprob
 - RF-03
 - RF-04
 
-### **RNF-02: Usabilidad del Chatbot (WhatsApp)**
-El flujo conversacional del chatbot le permitira al usuario poder usarlo sin necesidad de ayuda externa, priorizando un diseño intuitivo y de facil seguimiento.
+### **RNF-02: Chatbot facil de usar (WhatsApp)**
+Categoria de atributo de calidad: Intuitividad
 
-**Actores involucrados:**
-- Usuario
-- Sistema (WhatsApp)
+El chatbot es claro y facil de entender al guiar al usuario, limitando el numero de deciciones que el usuario debe tomar para asi evitar confusiones
+y escenarios inesperados
 
-**Flujo principal:**
-1. El usuario entra al WhatsApp
-2. El Chatbot orienta al usuario por medio de mensajes claros y predefinidos.
+**Condiciones del sistema:**
+- El dialogo del chatbot es breve y no usa palabras complejas o poco conocidas
+- Todas las opciones se le dan al usuario en botones y menus desplegables
+- Los mensajes del chatbot estan predifinido
 
-**Postcondicion:** El usuario completa el flujo del servicio seleccionado
+**Tecnica de comprobacion:**
+**NOTA:**(Alparecer hay paginas que te dicen que tan usada es una palabra, no se si les parece bien usar eso)
 
-**Criterios de Aceptacion:**
-- Los mensajes son breves y con claridad.
-- El flujo no es extenso ni arduio.
-- El chatbot esta hecho por medio de menus desplegables (botones).
-- Conversaciones predefinidas.
-- Diseño intuitivo.
+- Comprobacion manual: Probar manualmente el flujo conversacional y verificar que cumpla los criterios de
+  aceptacion
 
-**Restricciones:**
-- Unicamente estara disponible en español
-- No debe solicitar informacion sensible.
+**Criterio de aceptacion:**
+**NOTA:**(Si usamos una pagina como la que mencione antes, podemos poner que la pagina no marque las palabras como complicadas
+o poco usadas)
+
+- Ninguna opcion se elije, o decision se toma mediante otro medio que no sea un boton o menu desplegable
+- Que los mensajes del chatbot no excedan los **(INSERTAR CANTIDAD)** caracteres
+- Los mensajes del chatbot son siempre los mismos, exceptuando la informacion relacionada con la tarea que se esta
+  haciendo
 
 ---
 
