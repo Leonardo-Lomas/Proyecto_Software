@@ -4,10 +4,14 @@ Proyecto de la clase de Diseño de Software, Sistema de agendamiento y reagendam
 
 ## Documentación Tecnica
 [Carpeta](/Documentacion%20tecnica/) --- Carpeta donde se ubica la informacion tecnica del proyecto
-- [Archivo Requisitos](/Documentacion%20tecnica/Requisitos.md) ---  Requisitos que debe de cumplir el sistema en su totalidad 
-- [Archivo Flujo WP](/Documentacion%20tecnica/Flujo%20conversacional_modulo%20WhatsApp.pdf) --- Flujo conversacional que el modulo de WhatsApp debe de seguir en base a las opciones existentes en el sistema
-- [Diagrama Caso Continuo](/Documentacion%20tecnica/DiagramaBussinesProcess_CasoContinuo.jpg) --- Modelado del Caso Continuo (seguimiento en citas) del paciente
-- [Diagrama C4](/Documentacion%20tecnica/Diagrama%20C4.pdf) --- Modelado de la arquitectura del Sistema
-- [Mockup Web](/Documentacion%20tecnica/Mockups.md) --- Diseño visual del apartado Web
+- [Archivo Requisitos](/Documentacion%20tecnica/Documentos/DOC-Requisitos.md) ---  Requisitos que debe de cumplir el sistema en su totalidad 
+- [Archivo Flujo WP](/Documentacion%20tecnica/Documentos/DOC-Mockup%20WhatsApp.pdf) --- Flujo conversacional que el modulo de WhatsApp debe de seguir en base a las opciones existentes en el sistema
+- Documentacion de Caso de Uso Reprogramar Cita_Consultar Cita
+    - [Documento](Documentacion%20tecnica/Documentos/DOC-Caso%20de%20uso_Reprogramar%20Cita_Consultar%20Cita.pdf)
+    - [Diagrama](Documentacion%20tecnica/Diagramas/DIA-Caso%20de%20uso_Reprogramar%20Cita_Consultar%20Cita.jpeg)
+- [Diagrama de clases](Documentacion%20tecnica/Diagramas/DIA-Modelo%20de%20Clases.pdf) --- modelado del diagrama UML de la relacion de las entidades del sistema
+- [Diagrama de Logica de negocio_caso continuo](Documentacion%20tecnica/Diagramas/DIA-Business%20process_Caso%20continuo.pdf) --- Logica de negocio del flujo del usuario sobre el sistema en un caso de continuidad de citas
+- [Arquitectura](Documentacion%20tecnica/Diagramas/DIA-Arquitectura%20C4.pdf) --- Modelado de la arquitectura del sistema en un diagrama C4
+- [Mockup de la vista del sistema Web](Documentacion%20tecnica/Diagramas/mockup.md) --- Frontend no funcional de la vista de la pagina web.
 
 WP = WhatsApp
