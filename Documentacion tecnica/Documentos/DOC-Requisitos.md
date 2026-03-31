@@ -376,17 +376,17 @@ Permite que el usuario sea identificado automáticamente en WhatsApp/Web mediant
 - Sistema
 
 **Categoría de atributo de calidad de software**
-Seguridad (Autenticación, Integridad y Control de Acceso)
+-Seguridad (Autenticación, Integridad y Control de Acceso)
 
 **Técnica de comprobación**
-Pruebas de seguridad de manipulación de parámetros y suplantación de identidad. Se utilizarán herramientas de intercepción de tráfico de red para capturar la petición de identificación e intentar modificar manualmente el número telefónico enviado al backend, simulando el intento de un atacante de acceder a las citas de otro usuario.
+-Pruebas de seguridad de manipulación de parámetros y suplantación de identidad. Se utilizarán herramientas de intercepción de tráfico de red para capturar
+la petición de identificación e intentar modificar manualmente el número telefónico enviado al backend, simulando el intento de un atacante de acceder a las 
+citas de otro usuario.
 
 **Criterios de Aceptacion:**
-El sistema debe bloquear y rechazar el 100% de las peticiones cuyo número telefónico haya sido alterado o carezca de la firma/token de validación del proveedor original (API de WhatsApp o Web).
+-El sistema debe bloquear y rechazar el 100% de las peticiones cuyo número telefónico haya sido alterado o carezca de la firma/token de validación del 
+proveedor original (API de WhatsApp o Web).
 
-**Restricciones:**
-- Aplica en ambos modulos (Web/WhatsApp).
-- Solo se permite un usuario por numero telefonico.
 
 
 ### **RNF-04: Visualizacion de Citas proximas**
