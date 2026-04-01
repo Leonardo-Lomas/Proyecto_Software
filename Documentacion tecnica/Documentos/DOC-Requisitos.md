@@ -375,6 +375,13 @@ Permite que el usuario sea identificado automáticamente en WhatsApp/Web mediant
 - Usuario
 - Sistema
 
+**Condiciones del sistema**
+-Durante cualquier solicitud de acceso o 
+consulta en los módulos del sistema donde
+se invoque el proceso de
+identificaciónbasada en el 
+número telefónico.
+
 **Categoría de atributo de calidad de software**
 -Seguridad (Autenticación, Integridad y Control de Acceso)
 
