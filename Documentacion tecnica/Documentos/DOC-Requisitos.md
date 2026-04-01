@@ -313,32 +313,21 @@ El chatbot debe permitir al usuario consultar su próxima cita mediante un flujo
 ---
 ## Requisitos No Funcionales
 
-### **RNF-01: Integridad de la informacion**
+### **RNF-01: Sincronización de la informacion** 
+
 El sistema deberá garantizar que la información mostrada en consultas, comprobantes y notificaciones coincida exactamente con la registrada en la base de datos.
 
-**Actores involucrados:**
-- Sistema
+**Categoría de atributo de calidad de software:** Consistencia.
 
-**Flujo principal:**
-1. El sistema accede a la base de datos
-2. El sistema valida que la informacion mostrada al usuario sea la misma que aparece en la base de datos.
+**Condiciones del sistema:** El sistema debe mantener la sincronización de la información con la base de datos bajo cualquier operación del usuario.
 
-**Postcondicion:** La informacion presentada al usuario es la registrada en la base de datos
+**Tecnica de comprobación:** 
+- Pruebas de integración entre el frontend y la base de datos.
+- Pruebas de consistencia de la informacion posteriormente al uso de operaciones (agendar y reprogramar cita).
 
-**Criterios de aceptacion:**
-- Los datos de la cita mostrados coinciden con los registrados en la base de datos.
-- La informacion de la base de datos esta actualizada con cada accion (agendamiento y reprogramacion).
-- La informacion debe de estar sincronizada con cada operacion.
-
-**Restricciones:**
-- Toda informacion mostrada debe de estar previamente en la base de datos.
-- No se permite mostrar informacion desactualizada.
-
-**RFN relacionados:**
-- RF-01
-- RF-02
-- RF-03
-- RF-04
+**Criterio de aceptacion:**
+- El 100% de la información mostrada al usuario debe coincidir con lo almacenado en la base de datos.
+- No deben presentarse información desactualizada después de realizar una operación (tiempo de sincronización ≤ 1 segundo).
 
 ### **RNF-02: Chatbot facil de usar (WhatsApp)**
 Categoria de atributo de calidad: Intuitividad
