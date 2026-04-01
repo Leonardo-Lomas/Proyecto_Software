@@ -428,25 +428,17 @@ Protege la información personal de los usuarios mediante cifrado, control de ac
 **Restriciones:**
 - No se comparte información con terceros sin consentimiento.
 
-### **RNF-06: Usabilidad de la pagina Web**
-Garantiza que la interfaz web sea clara, responsiva y fácil de usar para agendar, consultar y reprogramar citas.
+### **RNF-06: Facilidad de uso de la pagina web**
+La interfaz web debe ser clara, responsiva y fácil de usar, permitiendo que los usuarios agenden, consulten y reprogramen citas sin dificultad, en un flujo breve y comprensible.
 
-**Actores involucrados:**
-- Usuario
-- Sistema
+**Categoría de atributo de calidad de software:** Intuitividad y Accesibilidad.
 
-**Flujo principal:**
-1. El usuario accede al portal web.
-2. El sistema presenta formularios y opciones claras.
+**Condiciones del sistema:** El portal web debe funcionar correctamente en navegadores de escritorio, con formularios validados en tiempo real y un diseño responsivo que se adapte a diferentes resoluciones.
 
-**Postcondición:** El usuario completa el agendamiento, consulta o reprogramación sin dificultad alguna.
+**Técnica de comprobación:** Pruebas de usabilidad con usuarios finales, midiendo el número de pasos requeridos para completar cada flujo y evaluando la claridad de los formularios.
 
 **Criterios de Aceptacion:**
-- Interfaz responsiva (Escritorio).
-- Formularios con validaciones inmediatas 
-- Flujo de agendamiento, reprogramacion y consulta de cita ≤ 7 pasos.
-- Diseño intuitivo y de facil uso.
-
-**Restricciones**:
-- Solo disponible en idioma español.
-
+- Los usuarios completan las tareas sin necesidad de asistencia externa.
+- La interfaz es responsiva en dispositivos de escritorio.
+- El flujo de agendamiento, consulta y reprogramación no excede 7 pasos.
+- Los formularios muestran validaciones inmediatas y mensajes claros en español.
