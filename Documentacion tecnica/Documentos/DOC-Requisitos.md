@@ -385,8 +385,8 @@ proveedor original (API de WhatsApp o Web).
 
 
 
-### **RNF-04: Visualizacion de Citas proximas**
-Se muestra la informacion de la cita proxima previamente agendada en el sistema.
+### **RNF-04: Despliegue de Citas proximas**
+Se presenta la informacion de la cita proxima previamente agendada en el sistema.
 
 **Actores involucrados:**
 - Usuario
@@ -395,14 +395,14 @@ Se muestra la informacion de la cita proxima previamente agendada en el sistema.
 **Flujo principal:**
 1. El usuario solicita la informacion de su cita.
 2. El sistema genera la previsualizacion de la informacion.
-3. El sistema recupera/genera el comprobante y se lo muestra al usuario.
+3. El sistema recupera/genera el comprobante y lo presenta al usuario.
 
-**Postcondicion:** El usuario visualiza información de su cita próxima.
+**Postcondicion:** El usuario accede a la información de su cita próxima.
 
 **Criterios de Aceptacion:**
 - La información coincide con la registrada en la base de datos.
 - La previsualizacion de la informacion es completa y legible
-- Siempre debe de ser posible visualizar los datos de la cita
+- Los datos de la cita estan disponibles en todo momento para su consulta
 
 **Restricciones:**
 - Solo usuarios autenticados pueden acceder a su informacion.
