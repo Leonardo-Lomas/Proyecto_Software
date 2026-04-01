@@ -407,26 +407,22 @@ Se muestra la informacion de la cita proxima previamente agendada en el sistema.
 **Restricciones:**
 - Solo usuarios autenticados pueden acceder a su informacion.
 
-### **RNF-05: Privacidad y Seguridad de Datos**
-Protege la información personal de los usuarios mediante cifrado, control de accesos y cumplimiento de normativas de protección de datos.
+### **RNF-05: Seguridad de Datos**
+El sistema debe proteger la información personal de los usuarios mediante cifrado, control de accesos y cumplimiento de normativas de protección de datos, garantizando que los datos no sean compartidos sin consentimiento.
 
-**Actores involucrados:**
-- Sistema
+**Categoría de atributo de calidad de software:** Seguridad (Confidencialidad, Integridad y Control de Acceso).
 
-**Flujo principal:**
-1. Se pasa la informacion a la base de datos por medios seguros
-2. Se controlan los accesos mediante las OTP.
+**Condiciones del sistema:** La información se transmite y almacena en la base de datos utilizando protocolos seguros de cifrado. El acceso a los datos está restringido únicamente a usuarios autenticados mediante OTP.
 
->OTP: One Time Password.
-
-**Postcondicion:** Los datos de los usuarios quedan protegidos en el sistema.
+**Técnica de comprobación:** Pruebas de seguridad con herramientas de análisis de tráfico y auditorías de cumplimiento normativo. Se realizarán intentos de acceso no autorizado para verificar que el sistema rechaza dichas solicitudes.
 
 **Criterios de Aceptacion:**
-- La informacion llega de forma segura a la base de datos.
-- Cumplimiento de normativas de proteccion de datos.
+- La información llega cifrada a la base de datos.
+- El sistema cumple con normativas de protección de datos aplicables (ej. GDPR, Ley Federal de Protección de Datos Personales en México).
+- El sistema rechaza el 100% de accesos no autorizados.
+- No se comparte información con terceros sin consentimiento explícito del usuario.
 
-**Restriciones:**
-- No se comparte información con terceros sin consentimiento.
+>OTP: One Time Password.
 
 ### **RNF-06: Usabilidad de la pagina Web**
 Garantiza que la interfaz web sea clara, responsiva y fácil de usar para agendar, consultar y reprogramar citas.
