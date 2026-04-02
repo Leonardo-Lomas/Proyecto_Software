@@ -341,14 +341,12 @@ y escenarios inesperados
 - Al recibir solicitudes del usuario, las respuestas que da el chatbot seran siempre las mismas, a excepcion de datos e informacion pertinente o en constante cambio como pueden ser horarios o el nombre del paciente
 
 **Tecnica de comprobacion:**
-**NOTA:**(Alparecer hay paginas que te dicen que tan usada es una palabra, no se si les parece bien usar eso)
-
 - Comprobacion manual: Probar manualmente el flujo conversacional y verificar que cumpla los criterios de aceptacion
 
 **Criterio de aceptacion:**
 - Al introducir los dialogos del chatbot en la pagina en un analizador de frecuencia de palabras en el español como EazyPronunciation.com, ninguna se encuentra fuera de las 5000 palabras mas frecuentes
 - Ninguna opcion se elije, o decision se toma mediante otro medio que no sea un boton o menu desplegable
-- Que los mensajes del chatbot no excedan los **(INSERTAR CANTIDAD)** caracteres
+- Que los mensajes del chatbot no excedan los 100 caracteres
 - Los mensajes del chatbot son siempre los mismos, exceptuando la informacion relacionada con la tarea que se esta haciendo
 
 ---
