@@ -387,27 +387,28 @@ proveedor original (API de WhatsApp o Web).
 
 ## RNF-04: Despliegue de Citas Próximas
 
-**Categoría de atributo de calidad:** Disponibilidad y Consistencia de Datos
+**Nombre del requisito:**  
+Despliegue de información de citas próximas
 
-**Descripción:**
-El sistema deberá mostrar al usuario autenticado la información de su cita próxima previamente agendada, garantizando que los datos sean correctos, completos y estén disponibles para consulta en todo momento.
+**Categoría de atributo de calidad:**  
+Disponibilidad y Consistencia de la Información
 
-**Condiciones del sistema:**
-El sistema deberá ser capaz de responder bajo una carga de hasta 100 usuarios concurrentes, manteniendo tiempos de respuesta adecuados y sin degradación en la disponibilidad de la información.
+**Descripción:**  
+El sistema debe mostrar al usuario autenticado la información de su próxima cita agendada, incluyendo los datos relevantes y el comprobante asociado, asegurando que la información presentada sea consistente con la almacenada en la base de datos.
 
-**Técnica de comprobación:**
-- Pruebas funcionales para verificar que la información mostrada coincide con la base de datos.
-- Pruebas de carga para validar el comportamiento del sistema con múltiples usuarios concurrentes.
-- Pruebas de disponibilidad simulando accesos en diferentes momentos.
+**Condiciones del sistema:**  
+El sistema debe ser capaz de responder a la solicitud bajo condiciones de operación normal y bajo carga concurrente de hasta N usuarios simultáneos, manteniendo tiempos de respuesta menores a 2 segundos para la consulta de la cita.
 
-**Criterio de aceptación:**
-- El sistema muestra la información de la cita en un tiempo menor o igual a 2 segundos.
-- El 100% de los datos visualizados coinciden con los registros almacenados en la base de datos.
-- El sistema mantiene una disponibilidad mínima del 99% para la consulta de citas.
-- La información presentada es completa y legible en el 100% de los casos evaluados.
+**Técnica de comprobación:**  
+- Pruebas de integración para validar la correcta recuperación de datos desde la base de datos.  
+- Pruebas de rendimiento (stress y carga) para medir tiempos de respuesta bajo concurrencia.  
+- Pruebas funcionales para verificar la correcta visualización de la información y del comprobante.
 
-**Restricciones:**
-- Solo usuarios autenticados pueden acceder a la información de sus citas.
+**Criterio de aceptación:**  
+- El 100% de las consultas realizadas por usuarios autenticados devuelven información consistente con la base de datos.  
+- El tiempo de respuesta del sistema no supera los 2 segundos en el 95% de las solicitudes bajo carga definida.  
+- La información mostrada incluye todos los campos obligatorios de la cita (fecha, hora, usuario, estado, comprobante).  
+- El acceso a la información está restringido exclusivamente a usuarios autenticados.
 
 ---
 
