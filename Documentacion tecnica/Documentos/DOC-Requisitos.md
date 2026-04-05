@@ -383,29 +383,33 @@ citas de otro usuario.
 -El sistema debe bloquear y rechazar el 100% de las peticiones cuyo número telefónico haya sido alterado o carezca de la firma/token de validación del 
 proveedor original (API de WhatsApp o Web).
 
+---
 
+## RNF-04: Despliegue de Citas Próximas
 
-### **RNF-04: Despliegue de Citas proximas**
-Se presenta la informacion de la cita proxima previamente agendada en el sistema.
+**Categoría de atributo de calidad:** Disponibilidad y Consistencia de Datos
 
-**Actores involucrados:**
-- Usuario
-- Sistema
+**Descripción:**
+El sistema deberá mostrar al usuario autenticado la información de su cita próxima previamente agendada, garantizando que los datos sean correctos, completos y estén disponibles para consulta en todo momento.
 
-**Flujo principal:**
-1. El usuario solicita la informacion de su cita.
-2. El sistema genera la previsualizacion de la informacion.
-3. El sistema recupera/genera el comprobante y lo presenta al usuario.
+**Condiciones del sistema:**
+El sistema deberá ser capaz de responder bajo una carga de hasta 100 usuarios concurrentes, manteniendo tiempos de respuesta adecuados y sin degradación en la disponibilidad de la información.
 
-**Postcondicion:** El usuario accede a la información de su cita próxima.
+**Técnica de comprobación:**
+- Pruebas funcionales para verificar que la información mostrada coincide con la base de datos.
+- Pruebas de carga para validar el comportamiento del sistema con múltiples usuarios concurrentes.
+- Pruebas de disponibilidad simulando accesos en diferentes momentos.
 
-**Criterios de Aceptacion:**
-- La información coincide con la registrada en la base de datos.
-- La previsualizacion de la informacion es completa y legible
-- Los datos de la cita estan disponibles en todo momento para su consulta
+**Criterio de aceptación:**
+- El sistema muestra la información de la cita en un tiempo menor o igual a 2 segundos.
+- El 100% de los datos visualizados coinciden con los registros almacenados en la base de datos.
+- El sistema mantiene una disponibilidad mínima del 99% para la consulta de citas.
+- La información presentada es completa y legible en el 100% de los casos evaluados.
 
 **Restricciones:**
-- Solo usuarios autenticados pueden acceder a su informacion.
+- Solo usuarios autenticados pueden acceder a la información de sus citas.
+
+---
 
 ### **RNF-05: Seguridad de Datos**
 El sistema debe proteger la información personal de los usuarios mediante cifrado, control de accesos y cumplimiento de normativas de protección de datos, garantizando que los datos no sean compartidos sin consentimiento.
