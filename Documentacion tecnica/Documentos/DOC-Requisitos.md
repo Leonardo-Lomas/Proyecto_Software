@@ -336,24 +336,18 @@ El chatbot es claro y facil de entender al guiar al usuario, limitando el numero
 y escenarios inesperados
 
 **Condiciones del sistema:**
-- El dialogo del chatbot es breve y no usa palabras complejas o poco conocidas
-- Todas las opciones se le dan al usuario en botones y menus desplegables
-- Los mensajes del chatbot estan predifinido
+- Al recibir una solicitud por parte del usuario, la respuesta del chatbot sera breve y facil de entender
+- Cuando el usuario requiere tomar una decision, el chatbot le proporciona una lista de opciones de las que elegir mediante botones y menus desplegables
+- Al recibir solicitudes del usuario, las respuestas que da el chatbot seran siempre las mismas, a excepcion de datos e informacion pertinente o en constante cambio como pueden ser horarios o el nombre del paciente
 
 **Tecnica de comprobacion:**
-**NOTA:**(Alparecer hay paginas que te dicen que tan usada es una palabra, no se si les parece bien usar eso)
-
-- Comprobacion manual: Probar manualmente el flujo conversacional y verificar que cumpla los criterios de
-  aceptacion
+- Comprobacion manual: Probar manualmente el flujo conversacional y verificar que cumpla los criterios de aceptacion
 
 **Criterio de aceptacion:**
-**NOTA:**(Si usamos una pagina como la que mencione antes, podemos poner que la pagina no marque las palabras como complicadas
-o poco usadas)
-
+- Al introducir los dialogos del chatbot en la pagina en un analizador de frecuencia de palabras en el español como EazyPronunciation.com, ninguna se encuentra fuera de las 5000 palabras mas frecuentes
 - Ninguna opcion se elije, o decision se toma mediante otro medio que no sea un boton o menu desplegable
-- Que los mensajes del chatbot no excedan los **(INSERTAR CANTIDAD)** caracteres
-- Los mensajes del chatbot son siempre los mismos, exceptuando la informacion relacionada con la tarea que se esta
-  haciendo
+- Que los mensajes del chatbot no excedan los 100 caracteres
+- Los mensajes del chatbot son siempre los mismos, exceptuando la informacion relacionada con la tarea que se esta haciendo
 
 ---
 
