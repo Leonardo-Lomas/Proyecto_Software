@@ -377,29 +377,34 @@ citas de otro usuario.
 -El sistema debe bloquear y rechazar el 100% de las peticiones cuyo número telefónico haya sido alterado o carezca de la firma/token de validación del 
 proveedor original (API de WhatsApp o Web).
 
+---
 
+## RNF-04: Despliegue de Citas Próximas
 
-### **RNF-04: Visualizacion de Citas proximas**
-Se muestra la informacion de la cita proxima previamente agendada en el sistema.
+**Nombre del requisito:**  
+Despliegue de información de citas próximas
 
-**Actores involucrados:**
-- Usuario
-- Sistema
+**Categoría de atributo de calidad:**  
+Disponibilidad y Consistencia de la Información
 
-**Flujo principal:**
-1. El usuario solicita la informacion de su cita.
-2. El sistema genera la previsualizacion de la informacion.
-3. El sistema recupera/genera el comprobante y se lo muestra al usuario.
+**Descripción:**  
+El sistema debe mostrar al usuario autenticado la información de su próxima cita agendada, incluyendo los datos relevantes y el comprobante asociado, asegurando que la información presentada sea consistente con la almacenada en la base de datos.
 
-**Postcondicion:** El usuario visualiza información de su cita próxima.
+**Condiciones del sistema:**  
+El sistema debe ser capaz de responder a la solicitud bajo condiciones de operación normal y bajo carga concurrente de hasta N usuarios simultáneos, manteniendo tiempos de respuesta menores a 2 segundos para la consulta de la cita.
 
-**Criterios de Aceptacion:**
-- La información coincide con la registrada en la base de datos.
-- La previsualizacion de la informacion es completa y legible
-- Siempre debe de ser posible visualizar los datos de la cita
+**Técnica de comprobación:**  
+- Pruebas de integración para validar la correcta recuperación de datos desde la base de datos.  
+- Pruebas de rendimiento (stress y carga) para medir tiempos de respuesta bajo concurrencia.  
+- Pruebas funcionales para verificar la correcta visualización de la información y del comprobante.
 
-**Restricciones:**
-- Solo usuarios autenticados pueden acceder a su informacion.
+**Criterio de aceptación:**  
+- El 100% de las consultas realizadas por usuarios autenticados devuelven información consistente con la base de datos.  
+- El tiempo de respuesta del sistema no supera los 2 segundos en el 95% de las solicitudes bajo carga definida.  
+- La información mostrada incluye todos los campos obligatorios de la cita (fecha, hora, usuario, estado, comprobante).  
+- El acceso a la información está restringido exclusivamente a usuarios autenticados.
+
+---
 
 ### **RNF-05: Seguridad de Datos**
 El sistema debe proteger la información personal de los usuarios mediante cifrado, control de accesos y cumplimiento de normativas de protección de datos, garantizando que los datos no sean compartidos sin consentimiento.
