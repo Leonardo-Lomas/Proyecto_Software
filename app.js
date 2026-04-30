@@ -1,8 +1,3 @@
-// src/app.js
-// ============================================================
-//  Punto de entrada – Backend WhatsApp
-//  Sistema de Agendamiento de Citas Terapéuticas
-// ============================================================
 
 require('dotenv').config();
 const express  = require('express');
@@ -28,10 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 // Webhook de Meta (GET = verificación, POST = mensajes entrantes)
 app.use('/webhook', webhookRoutes);
 
-// API interna: notificaciones salientes
+
 app.use('/api/notificaciones', notificacionRoutes);
 
-// API interna: consulta de citas (usada por el chatbot)
+
 app.use('/api/citas', citaRoutes);
 
 /* ── Health check ───────────────────────────────────────────── */
