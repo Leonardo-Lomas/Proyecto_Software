@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Digital - Sistema de Citas</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="navbar-logo">
+                    <i class="fas fa-hospital"></i>
+                    <span>Clínica Digital</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#dashboard" class="nav-link active">Inicio</a></li>
+                    <li><a href="#appointments" class="nav-link">Citas</a></li>
+                    <li><a href="#schedule" class="nav-link">Agendar</a></li>
+                    <li><a href="#profile" class="nav-link">Perfil</a></li>
+                    <li><a href="#help" class="nav-link">Ayuda</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <div class="hero-section">
+                    <h1>Bienvenido a Clínica Digital</h1>
+                    <p>Gestiona tus citas de forma rápida y fácil</p>
+                    <button class="btn btn-primary" onclick="showSection('schedule')">
+                        <i class="fas fa-calendar-plus"></i> Agendar Cita
+                    </button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-calendar"></i> Mis Citas</h3>
+                        </div>
+                        <div class="card-body">
+                            <p id="next-appointment">Cargando próximas citas...</p>
+                            <button class="btn btn-secondary" onclick="showSection('appointments')">Ver todas</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-user"></i> Mi Perfil</h3>
+                        </div>
+                        <div class="card-body">
+                            <p id="patient-name">Cargando información...</p>
+                            <button class="btn btn-secondary" onclick="showSection('profile')">Actualizar</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-comments"></i> Contacto WhatsApp</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>Contacta con nosotros por WhatsApp para asistencia rápida</p>
+                            <a href="https://wa.me/1234567890" target="_blank" class="btn btn-whatsapp">
+                                <i class="fab fa-whatsapp"></i> Abrir WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments" class="section">
+                <h2>Mis Citas</h2>
+                <div class="appointments-container">
+                    <div id="appointments-list" class="appointments-list">
+                        <!-- Appointments will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Schedule Section -->
+            <section id="schedule" class="section">
+                <h2>Agendar Nueva Cita</h2>
+                <form id="appointment-form" class="form-container">
+                    <div class="form-group">
+                        <label for="appointment-type">Tipo de Cita:</label>
+                        <select id="appointment-type" required>
+                            <option value="">Selecciona un tipo</option>
+                            <option value="individual">Terapia Individual</option>
+                            <option value="evaluation">Evaluación Psicológica</option>
+                            <option value="consultation">Consulta Médica</option>
+                            <option value="couples">Terapia de Pareja</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="therapist">Terapeuta:</label>
+                        <select id="therapist" required>
+                            <option value="">Selecciona un terapeuta</option>
+                            <!-- Options will be loaded dynamically -->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appointment-date">Fecha:</label>
+                        <input type="date" id="appointment-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="appointment-time">Hora:</label>
+                        <input type="time" id="appointment-time" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notas (opcional):</label>
+                        <textarea id="notes" rows="4" placeholder="Información adicional..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Agendar Cita</button>
+                    <button type="button" class="btn btn-secondary" onclick="showSection('dashboard')">Cancelar</button>
+                </form>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile" class="section">
+                <h2>Mi Perfil</h2>
+                <form id="profile-form" class="form-container">
+                    <div class="form-group">
+                        <label for="full-name">Nombre Completo:</label>
+                        <input type="text" id="full-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Teléfono:</label>
+                        <input type="tel" id="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp:</label>
+                        <input type="tel" id="whatsapp" placeholder="+1 (555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="id-number">Número de Identificación:</label>
+                        <input type="text" id="id-number">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" class="btn btn-secondary" onclick="showSection('dashboard')">Cancelar</button>
+                </form>
+            </section>
+
+            <!-- Help Section -->
+            <section id="help" class="section">
+                <h2>Ayuda y Preguntas Frecuentes</h2>
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <h3>¿Cómo agendo una cita?</h3>
+                        <p>Ve a la sección "Agendar" y sigue los pasos para seleccionar fecha, hora y terapeuta.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Puedo reagendar mi cita?</h3>
+                        <p>Sí, desde la sección "Mis Citas" puedes seleccionar una cita y reagendarla.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Cómo recibo recordatorios?</h3>
+                        <p>Los recordatorios se envían automáticamente por WhatsApp 24 horas antes de tu cita.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>¿Puedo cancelar una cita?</h3>
+                        <p>Sí, pero recomendamos hacerlo con al menos 24 horas de anticipación.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Clínica Digital. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+                <a href="#">Contacto</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/appointments.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>

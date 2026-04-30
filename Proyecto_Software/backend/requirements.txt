@@ -1,0 +1,10 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+Flask-SQLAlchemy==3.0.5
+Flask-JWT-Extended==4.5.2
+python-dotenv==1.0.0
+requests==2.31.0
+whatsapp-business-sdk==0.0.1
+SQLAlchemy==2.0.21
+Werkzeug==2.3.7
+gunicorn==21.2.0
