@@ -1,0 +1,30 @@
+{
+  "name": "whatsapp-backend",
+  "version": "1.0.0",
+  "description": "Backend para módulo de WhatsApp - Sistema de Agendamiento de Citas Terapéuticas",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "dotenv": "^16.3.1",
+    "axios": "^1.6.2",
+    "node-cron": "^3.0.3",
+    "pdfkit": "^0.14.0",
+    "uuid": "^9.0.0",
+    "express-validator": "^7.0.1",
+    "morgan": "^1.10.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
