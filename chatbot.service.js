@@ -1,14 +1,4 @@
-// src/services/chatbot.service.js
-// ============================================================
-//  Motor conversacional del chatbot de WhatsApp
-//
-//  Implementa los flujos definidos en:
-//  RF-W01  Agendamiento vía chatbot
-//  RF-W02  Reprogramación vía chatbot
-//  RFW-03  Consulta de cita vía chatbot
-//  RNF-02  Decisiones solo mediante botones/listas
-//  RNF-03  Identificación por número telefónico (sin login)
-// ============================================================
+
 
 const db                  = require('../config/db');
 const sesionModel         = require('../models/sesion.model');
@@ -46,13 +36,13 @@ const chatbotService = {
     // 1. Marcar como leído
     if (messageId) await whatsappService.marcarLeido(messageId).catch(() => {});
 
-    // 2. Identificar usuario (RNF-03: por número telefónico)
+    // 2. Identificar usuario 
     let sesion = sesionModel.obtener(telefono);
 
     if (!sesion) {
       const usuario = await db.buscarUsuarioPorTelefono(telefono);
       if (!usuario) {
-        // Usuario no registrado: redirigir a registro web (RF-05)
+        // Usuario no registrado
         await whatsappService.enviarTexto(
           telefono,
           'No encontramos tu número registrado.\n' +
