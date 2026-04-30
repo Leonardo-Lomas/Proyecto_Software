@@ -44,7 +44,7 @@ public class Usuario {
     public Usuario(){        
     }
 
-        //Geters y setters
+        // Geters y setters
     public String getNombre(){
         return nombre;
     }
