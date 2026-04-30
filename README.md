@@ -14,4 +14,4 @@ Proyecto de la clase de Diseño de Software, Sistema de agendamiento y reagendam
 - [Arquitectura](Documentacion%20tecnica/Diagramas/DIA-Arquitectura%20C4.pdf) --- Modelado de la arquitectura del sistema en un diagrama C4
 - [Mockup de la vista del sistema Web](Documentacion%20tecnica/Diagramas/mockup.md) --- Frontend no funcional de la vista de la pagina web.
 
-WP = WhatsApp
+WP = WhatsApp. 
